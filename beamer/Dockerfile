@@ -1,10 +1,11 @@
-FROM python:3.11.4
+FROM python:3.10.9
 
 WORKDIR /beamer
 
 COPY . /beamer
 
-RUN python -m pip install -e . --no-cache-dir
+RUN python -m pip install --upgrade pip
+RUN python -m pip install -r requirements.txt --no-cache-dir
 
 EXPOSE 5000
 

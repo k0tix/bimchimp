@@ -1,12 +1,4 @@
-click
-fastapi
 flask
 gunicorn
-pydantic
-pydantic-settings
-uvicorn
-pandas
 numpy
-matplotlib
 ifcopenshell
-jupyterlab
