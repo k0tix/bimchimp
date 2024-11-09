@@ -21,7 +21,7 @@ def summarize():
     request_json = request.get_json()
     input_file_content = request_json.get("file")
 
-    logging.info("Received {input_file[:10]}...")
+    logging.info(f"Received {input_file_content[:10]}...")
     
     input_file_decoded = base64.b64decode(input_file_content)
     with tempfile.NamedTemporaryFile(mode="+br") as input_file:
