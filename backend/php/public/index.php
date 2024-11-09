@@ -1,4 +1,6 @@
 <?php
+
+use Laminas\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
@@ -24,7 +26,7 @@ $app->get('/', function (Request $request, Response $response) {
     return $response;
 });
 
-$app->post('/files/add', function (Request $request, Response $response, $args) {
+$app->post('/files/add', function (Request $request, Response $response, $args) use($db) {
     // datapoikien koodi TODO
 
 
@@ -41,20 +43,24 @@ $app->post('/files/add', function (Request $request, Response $response, $args) 
     $cmd = __DIR__ . "/../WexBIM/win-x64/CreateWexBIM.exe $oldFile $newFile";
     exec($cmd, $out);
 
-
+    $title = $file->getClientFilename();
     // tietokantaan data TODO
-
+    $db->prepare("INSERT INTO model (title, fileData) values (?,?)")->execute([$title, file_get_contents($newFile)]);
     return $response;
 });
 
-$app->get('/files/list', function (Request $request, Response $response) {
-    return $response;
+$app->get('/files/list', function (Request $request, Response $response) use($db) {
+    $query = $db->prepare("SELECT id, title FROM model");
+    $query->execute([]);
+    $data = $query->fetch(PDO::FETCH_ASSOC);
+    return new JsonResponse($data);
 });
 
-$app->get('/files/{id}', function (Request $request, Response $response, $args) {
-    $id = $args['id'];
-
-    return $response;
+$app->get('/files/{id}', function (Request $request, Response $response, $args) use($db) {
+    $query = $db->prepare("SELECT * FROM model WHERE id=?");
+    $query->execute([$args['id']]);
+    $data = $query->fetch(PDO::FETCH_ASSOC);
+    return new JsonResponse(["id" => $data['id'], "title" => $data['title'], "file" => base64_encode($data['fileData'])]);
 });
 
 $app->run();
