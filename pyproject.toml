@@ -18,9 +18,9 @@ dependencies = [
     "pandas",
     "numpy",
     "matplotlib",
-    "multiprocessing",
-    "ifcopenshell"
+    "ifcopenshell",
+    "jupyterlab"
 ]
 
 [tool.setuptools.packages.find]
-include = ["beamer/src/python"]
+include = ["beamer"]
