@@ -1,0 +1,16 @@
+version: '3'
+services:
+  php:
+    build: ./php
+    restart: always
+    ports:
+      - 8080:80
+    volumes:
+      - ./php/:/app/
+      - ./db/:/db/
+    networks:
+      - network
+
+networks:
+  network:
+
