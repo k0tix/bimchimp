@@ -4,6 +4,14 @@ from pathlib import Path
 import tempfile
 
 import ifcopenshell
+import ifcopenshell.util.placement
+import ifcopenshell.util.element
+import ifcopenshell.geom
+import ifcopenshell.api.root
+import ifcopenshell.api.unit
+import ifcopenshell.api.context
+import ifcopenshell.api.project
+import ifcopenshell.api.geometry
 from typing import Dict
 
 import ifcopenshell
