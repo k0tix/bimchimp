@@ -1,4 +1,4 @@
+ifcopenshell
 flask
 gunicorn
 numpy
-ifcopenshell==0.8.0
