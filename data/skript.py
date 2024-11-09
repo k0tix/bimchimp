@@ -78,12 +78,13 @@ matrix = numpy.eye(4)
  
 # Create a new IFC entity for each clash 
 # Yoy'll need to have Blender python library (bpy) installed to run this part of the code 
-for collision in columns_to_beams_clashes: 
-    matrix[:,3][0:3] = list(collision.p1) 
- 
-    element = ifcopenshell.api.root.create_entity(model, ifc_class="IfcWall") 
-    ifcopenshell.api.geometry.edit_object_placement(model, product=element, matrix=matrix) 
-    ifcopenshell.api.geometry.assign_representation(model, product=element, representation=representation) 
+for collision in columns_to_beams_clashes:
+    matrix[:3, 3] = list(collision.p1)
+    
+    # Use IfcProxy instead of IfcWall
+    element = ifcopenshell.api.root.create_entity(model, ifc_class="IfcProxy", name="Clash Marker")
+    ifcopenshell.api.geometry.edit_object_placement(model, product=element, matrix=matrix)
+    ifcopenshell.api.geometry.assign_representation(model, product=element, representation=representation)
  
 # Save the new IFC file 
 model.write("DummyModelFixed_collided.ifc")
