@@ -17,7 +17,9 @@ dependencies = [
     "uvicorn",
     "pandas",
     "numpy",
-    "matplotlib"
+    "matplotlib",
+    "multiprocessing",
+    "ifcopenshell"
 ]
 
 [tool.setuptools.packages.find]
