@@ -94,7 +94,7 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         column = model.by_id(collision.a.id())
         beam = model.by_id(collision.b.id())
         matrix[:,3][0:3] = list(collision.p1)
-        element = ifcopenshell.api.root.create_entity(model, ifc_class="IfcWall")
+        element = ifcopenshell.api.root.create_entity(model, ifc_class="IfcProxy")
         ifcopenshell.api.geometry.edit_object_placement(
             model,
             product=element, 

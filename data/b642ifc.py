@@ -9,13 +9,13 @@ import click
 #------------------------------------------------------------------------------
 
 @click.command(no_args_is_help=True)
-@click.option("--input-file", "-i", required=True, type=click.File("rb"), help="Input file (.ifc)")
+@click.option("--input-file", "-i", required=True, type=click.File("r"), help="Input file (.json)")
 def main(**opts):
     input_file = opts["input_file"]
-    output_path = f"{Path(input_file.name).stem}.enc.json"
-    output_json = {"file": base64.b64encode(input_file.read()).decode("utf-8")}
-    with open(output_path, "w") as output_file:
-        json.dump(output_json, output_file)
+    input_file_contents = json.loads(Path(input_file.name).read_text())
+    output_path = f"{Path(Path(input_file.name).stem).stem}.dec.ifc"
+    with open(output_path, "wb") as output_file:
+        output_file.write(base64.b64decode(input_file_contents["file"]))
     click.echo(f"Successfully wrote to {output_path}")
 
 #------------------------------------------------------------------------------
