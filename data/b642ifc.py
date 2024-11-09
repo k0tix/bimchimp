@@ -16,7 +16,7 @@ def main(**opts):
     output_path = f"{Path(Path(input_file.name).stem).stem}.dec.ifc"
     with open(output_path, "wb") as output_file:
         output_file.write(base64.b64decode(input_file_contents["file"]))
-    click.echo(f"Successfully wrote to {output_path}")
+    click.echo(output_path)
 
 #------------------------------------------------------------------------------
 

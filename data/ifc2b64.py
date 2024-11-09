@@ -16,7 +16,7 @@ def main(**opts):
     output_json = {"file": base64.b64encode(input_file.read()).decode("utf-8")}
     with open(output_path, "w") as output_file:
         json.dump(output_json, output_file)
-    click.echo(f"Successfully wrote to {output_path}")
+    click.echo(output_path)
 
 #------------------------------------------------------------------------------
 
