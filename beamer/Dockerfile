@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 FROM python:3.9
+=======
+FROM python:3.9.11
+>>>>>>> 821c51c (Enc)
 
 WORKDIR /beamer
 
