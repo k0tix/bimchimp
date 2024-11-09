@@ -36,8 +36,9 @@ const SideBar: React.FC = () => {
     loadFiles();
 
     const interval = setInterval(() => {
+      console.log("Reloading files...");
       loadFiles();
-    }, 15000);
+    }, 15 * 1000);
 
     return () => clearInterval(interval);
   }, []);

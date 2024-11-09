@@ -150,10 +150,16 @@ const XbimViewer: React.FC<XbimViewerProps> = ({ className }) => {
   return (
     <>
       {!modelId && (
-        <div className="flex items-center justify-center h-full">
+        <div
+          className={cn(
+            className,
+            "absolute top-0 left-0 flex items-center justify-center h-full"
+          )}
+        >
           No model loaded
         </div>
       )}
+
       <canvas className={cn(className)} id="viewer" ref={canvasRef}></canvas>
     </>
   );
