@@ -23,6 +23,3 @@ dependencies = [
     "ifcopenshell",
     "jupyterlab"
 ]
-
-[tool.setuptools.packages.find]
-include = ["beamer"]

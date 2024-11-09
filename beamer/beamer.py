@@ -95,7 +95,7 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         )
         ifcopenshell.api.geometry.assign_representation(
             model,
-            product=element, 
+            product=element,
             representation=representation
         )
         clash_info = {
