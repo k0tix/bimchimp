@@ -15,25 +15,21 @@ $app = AppFactory::create();
 $app->addErrorMiddleware(true, true, true);
 
 // Add routes
-$app->get('/', function (Request $request, Response $response) {
-    $response->getBody()->write(<<<HTML
-        <form action="/files/add" method="post" enctype="multipart/form-data">
-            <input type="file" name="file" accept=".ifc">
-            <button type="submit">Send</button>
-        </form>
-    HTML);
-
-    return $response;
-});
 
 $app->post('/files/add', function (Request $request, Response $response, $args) use($db) {
     $data = json_decode($request->getBody()->getContents(), true);
     $title = $data['title'];
+    $b64 = $data['file'];
+    $prefix = 'data:application/octet-stream;base64,';
+    if (substr($b64, 0, strlen($prefix)) == $prefix) {
+        $b64 = substr($b64, strlen($prefix));
+    } 
+
     // datapoikien koodi TODO
     // muunto ifc-> weetabix
     $newFile = tempnam(__DIR__ . '/../tmp', 'ifc');
     $oldFile = $newFile . ".ifc";
-    file_put_contents($oldFile, base64_decode($data['file']));
+    file_put_contents($oldFile, base64_decode($b64));
     exec(__DIR__ . "/../WexBIM/win-x64/CreateWexBIM.exe $oldFile $newFile");
 
     
@@ -44,7 +40,7 @@ $app->post('/files/add', function (Request $request, Response $response, $args) 
 $app->get('/files/list', function (Request $request, Response $response) use($db) {
     $query = $db->prepare("SELECT id, title FROM model");
     $query->execute([]);
-    $data = $query->fetch(PDO::FETCH_ASSOC);
+    $data = $query->fetchAll(PDO::FETCH_ASSOC);
     return new JsonResponse($data);
 });
 
@@ -58,7 +54,7 @@ $app->get('/files/{id}', function (Request $request, Response $response, $args) 
 $app->get('/files/{id}/products', function (Request $request, Response $response, $args) use($db) {
     $query = $db->prepare("SELECT id, product_id FROM metadata WHERE id=?");
     $query->execute([$args['id']]);
-    $data = $query->fetch(PDO::FETCH_ASSOC);
+    $data = $query->fetchAll(PDO::FETCH_ASSOC);
     return new JsonResponse($data);
 });
 
