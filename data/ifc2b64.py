@@ -6,6 +6,8 @@ from pathlib import Path
 
 import click
 
+#------------------------------------------------------------------------------
+
 @click.command(no_args_is_help=True)
 @click.option("--input-file", "-i", required=True, type=click.File("rb"), help="Input file (.ifc)")
 def main(**opts):
@@ -16,5 +18,9 @@ def main(**opts):
         json.dump(output_json, output_file)
     click.echo("Done.")
 
+#------------------------------------------------------------------------------
+
 if __name__ == "__main__":
     main()
+
+#------------------------------------------------------------------------------
