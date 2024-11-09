@@ -158,7 +158,7 @@ def just_bim_it(input_file_path: Path) -> Dict:
     output_json["metadata"] = clash_data["clashes"]
     with tempfile.NamedTemporaryFile() as output_file:
         model.write(output_file.name)
-        output_json["file"] = base64.b64encode(output_file).decode("utf-8")
+        output_json["file"] = base64.b64encode(output_file.read()).decode("utf-8")
 
     return output_json
 
