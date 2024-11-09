@@ -60,13 +60,13 @@ def get_element_size(element: ifcopenshell.entity_instance) -> Dict:
 #------------------------------------------------------------------------------
 
 def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> Dict:
-    clashes = tree.clash_collision_many(
-        model.by_type("IfcBeam"),
-        model.by_type("IfcColumn"),
-        allow_touching=True
-    )
+    clash_types = {
+        "column_to_beam": {"elements": ("IfcColumn", "IfcBeam"), "color": (1.0, 0.0, 0.0)},
+        "column_to_foundation": {"elements": ("IfcColumn", "IfcFooting"), "color": (0.0, 0.0, 1.0)},
+    }
+
     clash_data = {
-        "total_clashes": len(clashes),
+        "total_clashes": 0,
         "clashes": []
     }
 
@@ -89,45 +89,72 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         faces=faces
     )
     matrix = np.eye(4)
+
+    surface_styles = {}
+    for clash_type, properties in clash_types.items():
+        color_rgb = properties["color"]
+        
+        # Create color rendering for each clash type
+        surface_style = model.create_entity("IfcSurfaceStyle", Name=clash_type)
+        rendering = model.create_entity("IfcSurfaceStyleRendering")
+        rendering.SurfaceColour = model.create_entity(
+            "IfcColourRgb", Name=clash_type, Red=color_rgb[0], Green=color_rgb[1], Blue=color_rgb[2]
+        )
+        surface_style.Styles = [rendering]
+        surface_styles[clash_type] = surface_style
+
+    # Process each clash type defined in clash_types dictionary
+    for clash_type, properties in clash_types.items():
+        element_a_type, element_b_type = properties["elements"]
+        clashes = tree.clash_collision_many(
+            model.by_type(element_a_type),
+            model.by_type(element_b_type),
+            allow_touching=True
+        )
+        clash_data["total_clashes"] += len(clashes)
     
-    for i, collision in enumerate(clashes):
-        column = model.by_id(collision.a.id())
-        beam = model.by_id(collision.b.id())
-        matrix[:,3][0:3] = list(collision.p1)
-        element = ifcopenshell.api.root.create_entity(model, ifc_class="IfcProxy")
-        ifcopenshell.api.geometry.edit_object_placement(
-            model,
-            product=element, 
-            matrix=matrix
-        )
-        ifcopenshell.api.geometry.assign_representation(
-            model,
-            product=element,
-            representation=representation
-        )
-        clash_info = {
-            "clash_id": f"clash_{i}",
-            "marker_id": element.id(),
-            "marker_global_id": element.GlobalId,
-            "location": {
-                "x": collision.p1[0],
-                "y": collision.p1[1],
-                "z": collision.p1[2]
-            },
-            "column": {
-                "id": column.id(),
-                "global_id": column.GlobalId,
-                "material": get_element_material(column),
-                "size": get_element_size(column)
-            },
-            "beam": {
-                "id": beam.id(),
-                "global_id": beam.GlobalId,
-                "material": get_element_material(beam),
-                "size": get_element_size(beam)
+        for i, collision in enumerate(clashes):
+            element_a = model.by_id(collision.a.id())
+            element_b = model.by_id(collision.b.id())
+            matrix[:,3][0:3] = list(collision.p1)
+            element = ifcopenshell.api.root.create_entity(model, ifc_class="IfcProxy")
+            ifcopenshell.api.geometry.edit_object_placement(
+                model,
+                product=element, 
+                matrix=matrix
+            )
+            ifcopenshell.api.geometry.assign_representation(
+                model,
+                product=element,
+                representation=representation
+            )
+
+            styled_item = model.create_entity("IfcStyledItem", Item=representation)
+            styled_item.Styles = [surface_styles[clash_type]]
+            clash_info = {
+                "clash_id": f"{clash_type}_clash_{i}",
+                "clash_type": clash_type,
+                "marker_id": element.id(),
+                "marker_global_id": element.GlobalId,
+                "location": {
+                    "x": collision.p1[0],
+                    "y": collision.p1[1],
+                    "z": collision.p1[2]
+                },
+                "element_a": {
+                    "id": element_a.id(),
+                    "global_id": element_a.GlobalId,
+                    "material": get_element_material(element_a),
+                    "size": get_element_size(element_a)
+                },
+                "element_b": {
+                    "id": element_b.id(),
+                    "global_id": element_b.GlobalId,
+                    "material": get_element_material(element_b),
+                    "size": get_element_size(element_b)
+                }
             }
-        }
-        clash_data["clashes"].append(clash_info)
+            clash_data["clashes"].append(clash_info)
     
     return clash_data
 
@@ -138,7 +165,8 @@ def just_bim_it(input_file_path: Path) -> Dict:
     tree = ifcopenshell.geom.tree()
     
     settings = ifcopenshell.geom.settings()
-    elements = model.by_type("IfcBeam") + model.by_type("IfcColumn")
+    element_types = ["IfcBeam", "IfcColumn", "IfcFooting"]
+    elements = sum([model.by_type(element_type) for element_type in element_types], [])
     
     it = ifcopenshell.geom.iterator(
         settings,
