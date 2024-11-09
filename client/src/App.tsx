@@ -22,43 +22,23 @@ function App() {
       <div className="relative w-screen h-screen">
         <XbimViewer className="h-screen w-full" />
 
-        <div className="absolute top-0 left-0">
-          <SidebarTrigger />
-        </div>
+        <div className="absolute bottom-0 left-0 m-8">
+          <div className="flex items-center space-x-4 p-4 bg-gray-900 rounded-lg shadow-lg">
+            <SidebarTrigger />
 
-        <div className="absolute bottom-0 left-0 bg-slate-500 rounded-xl m-8">
-          {/* <TableDemo /> */}
+            <Button
+              onClick={() => {
+                PubSub.publish("resetCamera");
+                console.log("Reset camera");
+              }}
+            >
+              Fit to screen
+            </Button>
 
-          <Button
-            onClick={() => {
-              PubSub.publish("resetCamera");
-              console.log("Reset camera");
-            }}
-          >
-            Fit to screen
-          </Button>
+            {/* Add more buttons here as needed */}
+          </div>
         </div>
       </div>
-      {/* <div className="h-screen w-screen flex items-center justify-center">
-        <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button variant="outline">Show Dialog</Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-              <AlertDialogDescription>
-                This action cannot be undone. This will permanently delete your
-                account and remove your data from our servers.
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction>Continue</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      </div> */}
     </Providers>
   );
 }

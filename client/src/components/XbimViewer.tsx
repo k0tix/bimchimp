@@ -79,6 +79,11 @@ const XbimViewer: React.FC<XbimViewerProps> = ({ className }) => {
 
           if (event === "click") {
             const isProduct = !!e.id;
+
+            if (!isProduct) {
+              return;
+            }
+
             const xyz = isProduct
               ? Array.from(e.xyz).map((num: any) => Math.round(num * 100) / 100)
               : "";
@@ -114,7 +119,7 @@ const XbimViewer: React.FC<XbimViewerProps> = ({ className }) => {
 
   useEffect(() => {
     const loadFileToken = PubSub.subscribe("loadBimFile", (msg, data) => {
-      console.log("Loading new file:", data);
+      console.log("Loading new file:");
       if (viewer) {
         if (modelId) {
           viewer.unload(modelId);
@@ -137,7 +142,14 @@ const XbimViewer: React.FC<XbimViewerProps> = ({ className }) => {
   }, [PubSub, viewer, modelId]);
 
   return (
-    <canvas className={cn(className)} id="viewer" ref={canvasRef}></canvas>
+    <>
+      {!modelId && (
+        <div className="flex items-center justify-center h-full">
+          No model loaded
+        </div>
+      )}
+      <canvas className={cn(className)} id="viewer" ref={canvasRef}></canvas>
+    </>
   );
 };
 
