@@ -1,0 +1,2011 @@
+{
+  "HPM_Rebar_Anchor_Bolt": {
+    "Standard": {
+      "items": [
+        "HPM_16L",
+        "HPM_16P",
+        "HPM_20L",
+        "HPM_20P",
+        "HPM_24L",
+        "HPM_24P",
+        "HPM_30L",
+        "HPM_30P",
+        "HPM_39L",
+        "HPM_39P"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/HPM_Item.jpg"
+    },
+    "ACI": {
+      "items": [
+        "HPM_16L",
+        "HPM_16P",
+        "HPM_20L",
+        "HPM_20P",
+        "HPM_24L",
+        "HPM_24P",
+        "HPM_30L",
+        "HPM_30P",
+        "HPM_39L",
+        "HPM_39P"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/HPM_Item.jpg"
+    }
+  },
+  "PPM_High_Strength_Anchor_Bolt": {
+    "PEC": {
+      "items": [
+        "PPM_30L",
+        "PPM_30P",
+        "PPM_36L",
+        "PPM_36P",
+        "PPM_39L",
+        "PPM_39P",
+        "PPM_45L",
+        "PPM_45P",
+        "PPM_52L",
+        "PPM_52P",
+        "PPM_60L",
+        "PPM_60P"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PPM.jpg"
+    },
+    "BOLDA": {
+      "items": [
+        "PPM_30L",
+        "PPM_30P",
+        "PPM_36L",
+        "PPM_36P",
+        "PPM_39L",
+        "PPM_39P",
+        "PPM_45L",
+        "PPM_45P",
+        "PPM_52L",
+        "PPM_52P"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PPM.jpg"
+    }
+  },
+  "HULCO_Anchor_Bolt": {
+    "items": [
+      "HULCO_30",
+      "HULCO_36",
+      "HULCO_39",
+      "HULCO_45",
+      "HULCO_52"
+    ],
+    "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/HULCO/HULCO.jpg"
+  },
+  "VOLTBOLT_High_Strength_Anchor_Bolt": {
+    "8.8": {
+      "items": [
+        "M30",
+        "M36",
+        "M39",
+        "M45",
+        "M52",
+        "M60"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/HULCO/HULCO.jpg"
+    },
+    "10.9": {
+      "items": [
+        "M30",
+        "M36",
+        "M39",
+        "M42",
+        "M45",
+        "M48",
+        "M52",
+        "M60"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/Anchor%20bolts/VOLTBOLT%20item.jpg"
+    }
+  },
+  "COPRA_Anchoring_Coupler": {
+    "P": {
+      "items": [
+        "COPRA_P",
+        "COPRA16H_P",
+        "COPRA20H_P",
+        "COPRA24H_P",
+        "COPRA30H_P",
+        "COPRA39H_P",
+        "COPRA30P_P",
+        "COPRA36P_P",
+        "COPRA39P_P",
+        "COPRA45P_P",
+        "COPRA52P_P"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/COPRA%20P.PNG"
+    },
+    "D": {
+      "items": [
+        "COPRA_D",
+        "COPRA16H_D",
+        "COPRA20H_D",
+        "COPRA24H_D",
+        "COPRA30H_D",
+        "COPRA39H_D",
+        "COPRA30P_D",
+        "COPRA36P_D",
+        "COPRA39P_D",
+        "COPRA45P_D",
+        "COPRA52P_D"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/COPRA%20D.PNG"
+    },
+    "L": {
+      "items": [
+        "COPRA16H_L",
+        "COPRA20H_L",
+        "COPRA24H_L",
+        "COPRA30H_L",
+        "COPRA39H_L",
+        "COPRA30P_L",
+        "COPRA36P_L",
+        "COPRA39P_L",
+        "COPRA45P_L",
+        "COPRA52P_L"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/COPRA%20L.PNG"
+    },
+    "P12": {
+      "items": [
+        "COPRA16H_P12",
+        "COPRA20H_P12",
+        "COPRA24H_P12",
+        "COPRA30H_P12",
+        "COPRA39H_P12",
+        "COPRA30P_P12",
+        "COPRA36P_P12",
+        "COPRA39P_P12",
+        "COPRA45P_P12",
+        "COPRA52P_P12"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/COPRA%20P12.PNG"
+    }
+  },
+  "Column_Shoes": {
+    "HPKM": {
+      "Standard": {
+        "items": [
+          "HPKM_16",
+          "HPKM_20",
+          "HPKM_24",
+          "HPKM_30",
+          "HPKM_39"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/HPKM_Product.jpg"
+      },
+      "ACI": {
+        "items": [
+          "HPKM_16_ACI",
+          "HPKM_20_ACI",
+          "HPKM_24_ACI",
+          "HPKM_30_ACI",
+          "HPKM_39_ACI"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/HPKM_Product.jpg"
+      }
+    },
+    "BOLDA": {
+      "items": [
+        "BOLDA_30",
+        "BOLDA_36",
+        "BOLDA_39",
+        "BOLDA_45",
+        "BOLDA_52"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/BOLDA%20image.png"
+    },
+    "ROOCO": {
+      "items": [
+        "ROOCO_16",
+        "ROOCO_20",
+        "ROOCO_24",
+        "ROOCO_30"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/ROCCO%20shoe.png"
+    },
+    "HELKA": {
+      "items": [
+        "HELKA_24",
+        "HELKA_30",
+        "HELKA_39"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/BOLDA%20image.png"
+    }
+  },
+  "Beam_Shoes": {
+    "BECO": {
+      "items": [
+        "BECO16H",
+        "BECO20H",
+        "BECO24H",
+        "BECO30H",
+        "BECO39H",
+        "BECO30P",
+        "BECO36P",
+        "BECO39P",
+        "BECO45P",
+        "BECO52P"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/BECO.PNG"
+    },
+    "RBC": {
+      "items": [
+        "RBC_16",
+        "RBC_20",
+        "RBC_24",
+        "RBC_30",
+        "RBC_36",
+        "RBC_45",
+        "RBC_52"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/RBC%20product.jpg"
+    }
+  },
+  "Welded_Connections": {
+    "Anchor_Plates": {
+      "WELDA": {
+        "items": [
+          "WELDA_50x100_68",
+          "WELDA_50x100_108",
+          "WELDA_100x100_68",
+          "WELDA_100x100_108",
+          "WELDA_100x150_70",
+          "WELDA_100x150_110",
+          "WELDA_100x200_72",
+          "WELDA_100x200_112",
+          "WELDA_100x200_162",
+          "WELDA_100x300_165",
+          "WELDA_150x150_70",
+          "WELDA_150x150_110",
+          "WELDA_150x150_162",
+          "WELDA_200x200_72",
+          "WELDA_200x200_112",
+          "WELDA_200x200_162",
+          "WELDA_200x300_165",
+          "WELDA_250x250_165",
+          "WELDA_300x300_165"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/WELDA%20Strong%20464x362.jpg"
+      },
+      "WELDA_Strong": {
+        "items": [
+          "WS_150x150_220",
+          "WS_150x150_285",
+          "WS_150x200_220",
+          "WS_150x200_355",
+          "WS_150x250_220",
+          "WS_150x250_355",
+          "WS_200x200_220",
+          "WS_200x200_355",
+          "WS_200x250_220",
+          "WS_200x250_355",
+          "WS_200x300_280",
+          "WS_200x300_435",
+          "WS_250x250_220",
+          "WS_250x250_355",
+          "WS_300x300_280",
+          "WS_300x300_435",
+          "WS_300x500_280",
+          "WS_300x500_435",
+          "WS_400x400_280",
+          "WS_400x400_435",
+          "WS_500x500_280",
+          "WS_500x500_435",
+          "WS_600x600_280",
+          "WS_600x600_435"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/WELDA%20Strong%20464x362.jpg"
+      }
+    },
+    "Long_WELDA_Anchor_Plate": {
+      "items": [
+        "WELDA_100xL_70",
+        "WELDA_150xL_70",
+        "WELDA_200xL_70",
+        "WELDA_100xL_115",
+        "WELDA_150xL_115",
+        "WELDA_200xL_115",
+        "WELDA_300xL_115",
+        "WELDA_400xL_120",
+        "WELDA_300xL_225",
+        "WELDA_400xL_225",
+        "WELDA_500xL_225",
+        "WELDA_600xL_225"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/Long-fastening-plates-500x313.png"
+    },
+    "KL_Anchor_Plate": {
+      "items": [
+        "KL_50x100_218",
+        "KL_100x100_218",
+        "KL_100x150_220",
+        "KL_100x200_222",
+        "KL_100x300_315",
+        "KL_150x150_222",
+        "KL_200x200_312",
+        "KL_200x300_315",
+        "KL_250x250_315",
+        "KL_300x300_315"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/KL.jpg"
+    },
+    "KKT_Angle_Bar": {
+      "items": [
+        "KKT 50",
+        "KKT 80",
+        "KKT 100"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/KKT%2050-80.jpg"
+    },
+    "KKT Angle Bar 100" : {
+      "items":["KKT 100"],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/KKT%2050-80.jpg"
+    },
+    "THRELDA" : {
+      "items" :[
+        "THRELDA 150x150-220/16",
+        "THRELDA 150x150-220/20",
+        "THRELDA 150x200-220/20",
+        "THRELDA 200x200-220/24",
+        "THRELDA 200x250-220/24",
+        "THRELDA 200x300-220/30",
+        "THRELDA 300x300-220/30",
+        "THRELDA 150x150-355/16",
+        "THRELDA 150x200-355/20",
+        "THRELDA 200x200-355/20",
+        "THRELDA 150x250-355/24",
+        "THRELDA 250x250-355/24",
+        "THRELDA 350x350-355/30",
+        "THRELDA 300x500-355/30",
+        "THRELDA 500x500-355/39"
+      ],
+      "img" : "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/Threlda/THRELDA_dimensions.jpg"
+    },
+    "THRELDA Double T" : {
+      "items" :[
+        "THRELDA Double T 150x150/16",
+        "THRELDA Double T 150x150/20",
+        "THRELDA Double T 200x200/24",
+        "THRELDA Double T 250x250/24",
+        "THRELDA Double T 300x300/30",
+        "THRELDA Double T 400x400/30",
+        "THRELDA Double T 500x500/30",
+        "THRELDA Double T 300x300/39"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/Threlda/THRELDA_DOUBLE_T_dimensions.jpg"
+    },
+    "THRELDA Double S" : {
+      "items" : [
+        "THRELDA Double S 150x150/16",
+        "THRELDA Double S 150x150/20",
+        "THRELDA Double S 200x200/24",
+        "THRELDA Double S 250x250/24",
+        "THRELDA Double S 300x300/30",
+        "THRELDA Double S 400x400/30",
+        "THRELDA Double S 500x500/30",
+        "THRELDA Double S 300x300/39"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/Threlda/THRELDA_DOUBLE_S_dimensions.jpg"
+    }
+    
+  },
+  "Cast-in Weld Connectors" : {
+    "TR Curtain Wall Supports" : {
+      "items" :[
+        "TR 15",
+        "TR 16",
+        "TR 25",
+        "TR 26"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/TR_15-16.jpg"
+    },
+    "TR Slab Connectors" : {
+      "items" :[
+        "TR 38"
+      ],
+      "img" : "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/TR_38.jpg"
+    },
+    "TR TT Slab Connectors" : {
+      "items" :[
+        "TR 39",
+        "TR 44"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/TR_39_44.png"
+    },
+    "TR Edge Connectors" : {
+      "items" :[
+        "TR 23",
+        "TR 24",
+        "TR 36",
+        "TR 37",
+        "TR 43"
+      ],
+      "img" : "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/TR%20Combination.jpg"
+
+    }
+  },
+  "Corner protectors" : {
+    "SKT Angle Bar" : {
+      "items" :[
+        "SKT 50"
+      ],
+      "img" : "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/SKT.jpg"
+    },
+    "UKT Angle Bar" : {
+      "items":[
+        "UKT 50",
+        "UKT 60",
+        "UKT 80",
+        "UKT 100x50",
+        "UKT 100"
+      ],
+      "img" : "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/UKT.jpg"
+    },
+    "KS Corner Protector" : {
+      "items":[
+        "KS"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/KS.jpg"
+    },
+    "RLRK Support" : {
+      "items": [
+        "RLRK"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/RLRK_dimensions.jpg"
+    }
+  },
+  
+  "Lifting_and_Transportation": {
+    "RR_SA_Long_Inserts": {
+      "items": [
+        "RR-SA-0.7-110",
+        "RR-SA-1.4-110",
+        "RR-SA-1.4-160",
+        "RR-SA-2.5-150",
+        "RR-SA-2.5-200",
+        "RR-SA-2.5-250",
+        "RR-SA-3.0-160",
+        "RR-SA-3.0-200",
+        "RR-SA-3.0-280",
+        "RR-SA-4.0-180",
+        "RR-SA-4.0-240",
+        "RR-SA-4.0-320",
+        "RR-SA-5.0-180",
+        "RR-SA-5.0-240",
+        "RR-SA-7.5-260",
+        "RR-SA-7.5-300",
+        "RR-SA-7.5-420",
+        "RR-SA-10.0-300",
+        "RR-SA-10.0-370",
+        "RR-SA-10.0-520",
+        "RR-SA-14.0-370",
+        "RR-SA-14.0-460",
+        "RR-SA-22.0-500",
+        "RR-SA-22.0-620"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/RR.PNG"
+    },
+    "RR_EA_Long_Inserts": {
+      "items": [
+        "RR-EA-1.4-200",
+        "RR-EA-2.5-230",
+        "RR-EA-4.0-270",
+        "RR-EA-5.0-290",
+        "RR-EA-7.5-320",
+        "RR-EA-10.0-390",
+        "RR-EA-12.5-500",
+        "RR-EA-17.0-500",
+        "RR-EA-22.0-500"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/RR%20EA.jpg"
+    },
+    "RR_Short_Inserts": {
+      "items": [
+        "RR_2",
+        "RR_4",
+        "RR_2/53",
+        "RR_4/68",
+        "RRK_2",
+        "RRK_4"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/RR-PA.jpg.tn_26a7d.jpg"
+    },
+    "WILJA_Lifting_Insert": {
+      "items": [
+        "WILJA_2",
+        "WILJA_3",
+        "WILJA_4",
+        "WILJA_5",
+        "WILJA_6"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/COPRA%20D.PNG"
+    },
+    "JENKA_Long_Inserts": {
+        "SRA": {
+          "items" :[
+            "SRA12x195",
+            "SRA16x275",
+            "SRA20x360",
+            "SRA24x400",
+            "SRA30x505",
+            "SRA36x690",
+            "SRA42x840",
+            "SRA52x950"
+          ],
+          "img" : "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/SRA.PNG"
+        },
+        "WAL": {
+          "items": [
+            "WAL12x135",
+            "WAL16x215",
+            "WAL20x270",
+            "WAL24x350",
+            "WAL30x450",
+            "WAL36x570",
+            "WAL42x620",
+            "WAL52x880"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/WAL.PNG"
+        },
+        "TF": {
+          "items": [
+            "TF_12x100",
+            "TF_16x130",
+            "TF_20x185",
+            "TF_24x200",
+            "TF_30x275",
+            "TF_36x335",
+            "TF_42x385",
+            "TF_52x550"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/Jenka_TF_product.jpg"
+        },
+        "SRASW": {
+          "items": [
+            "SRASW20x605",
+            "SRASW24x715",
+            "SRASW30x850",
+            "SRASW36x1100",
+            "SRASW42x1250",
+            "SRASW52x1500"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/SRASW.PNG"
+        },
+        "CSA": {
+          "items": [
+            "CSA12x40",
+            "CSA16x54",
+            "CSA20x67",
+            "CSA24x77",
+            "CSA30x105",
+            "CSA36x125",
+            "CSA42x145",
+            "CSA52x195"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/CSA.PNG"
+        }
+    },
+    "JENKA_Short_Inserts": {
+      "WAS": {
+        "items": [
+          "WAS12x105",
+          "WAS16x165",
+          "WAS20x195",
+          "WAS24x240",
+          "WAS30x300",
+          "WAS36x380",
+          "WAS42x450"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/WAS.PNG"
+      },
+      "PLA": {
+        "items": [
+          "PLA_20",
+          "PLA_24",
+          "PLA_30",
+          "PLA_36"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/Jenka_PLA_product.JPG"
+      },
+      "BSA": {
+        "items": [
+          "BSA12x60",
+          "BSA16x80",
+          "BSA20x100",
+          "BSA24x115",
+          "BSA30x150"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/BSA.PNG"
+      },
+      "PSA": {
+        "items": [
+          "PSA12x30",
+          "PSA16x35",
+          "PSA20x47",
+          "PSA24x54",
+          "PSA30x72",
+          "PSA36x84",
+          "PSA42x98",
+          "PSA52x117"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PSA.PNG"
+      }
+    },
+    "JENKA_Lifting_Keys": {
+      "TLL": {
+        "items": [
+          "TLL12x133",
+          "TLL16x138",
+          "TLL20x180",
+          "TLL24x212",
+          "TLL30x245",
+          "TLL36x293",
+          "TLL42x350",
+          "TLL52x435"
+        ],
+        "img" : "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/TLL.PNG"
+      },
+      "JL": {
+        "items" : [
+          "JL12x137",
+          "JL16x137",
+          "JL20x146",
+          "JL24x146",
+          "JL30x155",
+          "JL36x155",
+          "JL42x192",
+          "JL52x192"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%content/JL.PNG"
+      },
+      "JLW": {
+        "items": [
+          "JLW12x205",
+          "JLW16x335",
+          "JLW20x385",
+          "JLW24x410",
+          "JLW30x475",
+          "JLW36x525",
+          "JLW42x615",
+          "JLW52x710"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%content/JLW.PNG"
+      },
+      "TLP_EU" : {
+        "items":[
+          "TLP_16x101",
+          "TLP_20x121",
+          "TLP_24x148",
+          "TLP_30x171",
+          "TLP_36x179"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/1.%20TLP%20Lifting%20key.png"
+      },
+      "SL_APAC" : {
+        "items":[
+          "SL_12x135",
+          "SL_16x135",
+          "SL_20x160",
+          "SL_20x203_Long",
+          "SL_24x160",
+          "SL_30x205",
+          "SL_36x205",
+          "SL_42x230",
+          "SL_52x278"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/1.%20TLP%20Lifting%20key.png"
+      }
+    },
+    "JENKA_Accessories": {
+      "DSH": {
+        "items": [
+          "DSH12",
+          "DSH16",
+          "DSH20",
+          "DSH24",
+          "DSH30",
+          "DSH36",
+          "DSH42",
+          "DSH52"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20DSH.png"
+      },
+      "NP_P": {
+        "items" : [
+          "NP_P_12",
+          "NP_P_16",
+          "NP_P_20",
+          "NP_P_24",
+          "NP_P_30",
+          "NP_P_36",
+          "NP_P_42",
+          "NP_P_52"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20NPP.png"
+      },
+      "NP_M": {
+        "items" : [
+          "NP_M_12",
+          "NP_M_16",
+          "NP_M_20",
+          "NP_M_24",
+          "NP_M_30",
+          "NP_M_36",
+          "NP_M_42",
+          "NP_M_52"
+        ],
+        "img" : "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20NPM.png"
+      },
+      "NNP": {
+        "items" : [
+          "NNP_12",
+          "NNP_14",
+          "NNP_16",
+          "NNP_18",
+          "NNP_20",
+          "NNP_24",
+          "NNP_30",
+          "NNP_36",
+          "NNP_42"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20NNP.png"
+      },
+      "PNP": {
+        "items":[
+          "PNP_1224",
+          "PNP_30",
+          "PNP_36",
+          "PNP_42",
+          "PNP_1224_S"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20PNP.png"
+      },
+      "CPP": {
+        "items":[
+          "CPP_12",
+          "CPP_14",
+          "CPP_16",
+          "CPP_18",
+          "CPP_20",
+          "CPP_24",
+          "CPP_30",
+          "CPP_36",
+          "CPP_42",
+          "CPP_52",
+          "CPP_56",
+          "CPP_60"
+        ],
+        "img":"https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20CPP.png"
+      } 
+    }
+  },
+  "KK": {
+    "Long Inserts": {
+      "KK Long inserts": {
+        "items": [
+          "KK 1.3 x 120",
+          "KK 2.5 x 170",
+          "KK 5.0 x 240",
+          "KK 7.5 x 300",
+          "KK 10.0 x 340",
+          "KK 15.0 x 400",
+          "KK 20.0 x 500",
+          "KK 32.0 x 700"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/kk%20sw%20insert.png"
+      },
+      "KK SW" : {
+        "items":[
+          "KK SW 5.0",
+          "KK SW 7.5",
+          "KK SW 10.0",
+          "KK SW 15.0",
+          "KK SW 20.0"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/kk%20sw%20insert.png"
+      },
+      "KKD": {
+        "items":[
+          "KKD 15.0",
+          "KKD 20.0"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/kkd%20insert.png"
+      },
+      "KKR": {
+        "items":[
+          "KKR 5.0",
+          "KKR 7.5",
+          "KKR 10.0",
+          "KKR 15.0",
+          "KKR 20.0"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/kkr%20insert.png"
+      },
+      "KKR SW": {
+        "items":[
+          "KKR SW 10.0",
+          "KKR SW 15.0",
+          "KKR SW 20.0"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/kkr%20sw%20insert.png"
+      }
+    },
+    "Short Inserts": {
+      "KK Short inserts": {
+        "items": [
+          "KK 1.3",
+          "KK 2.5",
+          "KK 5.0",
+          "KK 7.5",
+          "KK 10.0",
+          "KK 15.0",
+          "KK 20.0",
+          "KK 32.0"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/kk%20short%20insert.png"
+      }
+    },
+    "Lifting Keys": {
+      "KKL": {
+        "items": [
+          "KKL 1.3",
+          "KKL 2.5",
+          "KKL 5",
+          "KKL 7",
+          "KKL 10",
+          "KKL 15",
+          "KKL 20",
+          "KKL 32"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/kkl%20lifting%20key.png"
+      }
+    },
+    "Accessories": {
+      "KK Accessories": {
+        "KK FR": {
+          "items": [
+            "KK FR 1.3",
+            "KK FR 2.5",
+            "KK FR 5",
+            "KK FR 7.5",
+            "KK FR 10",
+            "KK FR 15",
+            "KK FR 20",
+            "KK FR 32"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20kk%20fr.png"
+        },
+        "KK FW": {
+          "items": [
+            "KK FW 1.3",
+            "KK FW 2.5",
+            "KK FW 5",
+            "KK FW 7.5",
+            "KK FW 10",
+            "KK FW 15",
+            "KK FW 20",
+            "KK FW 32"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20kk%20fw.png"
+        },
+        "KK FS": {
+          "items": [
+            "KK FS 1.3",
+            "KK FS 2.5",
+            "KK FS 5",
+            "KK FS 7.5",
+            "KK FS 10",
+            "KK FS 15",
+            "KK FS 20",
+            "KK FS 32"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20kk%20fs.png"
+        },
+        "KK FM": {
+          "items": [
+            "KK FM 1.3",
+            "KK FM 2.5",
+            "KK FM 5",
+            "KK FM 10"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20kk%20fm.png"
+        },
+        "KK FG": {
+          "items": [
+            "KK FG 1.3",
+            "KK FG 2.5",
+            "KK FG 5",
+            "KK FG 10"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/acc%20kk%20fg.png"
+        }
+      }
+    }
+  },
+  "Precast_Wall_Connections": {
+    "Wall_Connectors": {
+      "PVL_Connecting_Loop": {
+        "items": [
+          "PVL_60",
+          "PVL_80",
+          "PVL_100",
+          "PVL_120",
+          "PVL_140",
+          "PVL_SOLO"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PVL_Product.JPG"
+      },
+      "WILORA": {
+        "items": [
+          "WILORA_20",
+          "WILORA_50"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%content/wilora_1.JPG"
+      },
+      "SUMO_Wall_Shoe": {
+        "items": [
+          "SUMO_16H",
+          "SUMO_20H",
+          "SUMO_24H",
+          "SUMO_30H",
+          "SUMO_39H",
+          "SUMO_30P",
+          "SUMO_36P",
+          "SUMO_39P",
+          "SUMO_45P",
+          "SUMO_52P"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/SUMO_combined_product.jpg"
+      }
+    },
+    "KAPU_Safety_Railing_Sleeve": {
+      "items": [
+        "KAPU-202",
+        "KAPU-602",
+        "KAPU-602+",
+        "KAPU-403",
+        "KAPU-503",
+        "KAPU-603",
+        "KAPU-703",
+        "KAPU-803"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/KAPU%20Dim.jpg"
+    },
+    "HPM_AL_Wall_Shoe_Anchor_Bolt": {
+      "items": [
+        "HPM_16L_AL16",
+        "HPM_16P_AL16",
+        "HPM_20L_AL20",
+        "HPM_20P_AL20",
+        "HPM_24L_AL24",
+        "HPM_24P_AL24",
+        "HPM_30L_AL30",
+        "HPM_30P_AL30",
+        "HPM_39L_AL39",
+        "HPM_39P_AL39",
+        "PPM_30L_AL30",
+        "PPM_30P_AL30",
+        "PPM_36L_AL36",
+        "PPM_36P_AL36",
+        "PPM_39L_AL39",
+        "PPM_39P_AL39",
+        "PPM_45L_AL45",
+        "PPM_45P_AL45",
+        "PPM_52L_AL52",
+        "PPM_52P_AL52"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/Anchor%20bolts/Wall_Shoe_Anchor_Bolt.jpg"
+    }
+  },
+  "Sandwich_Panel_Connectors": {
+    "PD_Diagonal_Tie": {
+      "items": [
+        "PD_100",
+        "PD_120",
+        "PD_140",
+        "PD_150",
+        "PD_180",
+        "PD_200",
+        "PD_210",
+        "PD_220",
+        "PD_240",
+        "PD_260",
+        "PD_280",
+        "PD_300",
+        "PD_320",
+        "PD_340",
+        "PD_360",
+        "PD_380",
+        "PD_400",
+        "PD_420",
+        "PD_440",
+        "PD_450"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PD.jpg"
+    },
+    "PPA_Beam_Tie": {
+      "items": [
+        "PPA_150",
+        "PPA_180",
+        "PPA_200",
+        "PPA_210",
+        "PPA_220",
+        "PPA_240",
+        "PPA_260",
+        "PPA_280",
+        "PPA_300",
+        "PPA_320",
+        "PPA_340",
+        "PPA_360",
+        "PPA_380",
+        "PPA_400",
+        "PPA_420",
+        "PPA_440",
+        "PPA_450"
+      ],
+      "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PPA.jpg"
+    },
+    "Connector_Pins": {
+      "PPI": {
+        "items": [
+          "PPI_170",
+          "PPI_190",
+          "PPI_210",
+          "PPI_230",
+          "PPI_250",
+          "PPI_280",
+          "PPI_300",
+          "PPI_320",
+          "PPI_340",
+          "PPI_360",
+          "PPI_380",
+          "PPI_400",
+          "PPI_420",
+          "PPI_440",
+          "PPI_450"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PPI_Q%20dim.JPG"
+      },
+      "PDQ": {
+        "items": [
+          "PDQ_170",
+          "PDQ_190",
+          "PDQ_210",
+          "PDQ_230"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PPI_Q%20dim.JPG"
+      }
+    }
+  },
+  "Reinforcement_Systems": {
+    "PSB_Punching_Reinforcement": {
+      "PSB_GROUP": {
+        "items": [
+          "8xPSB",
+          "12xPSB",
+          "16xPSB",
+          "20xPSB",
+          "24xPSB",
+          "28xPSB"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PSB_dim_2.jpg"
+      },
+      "PSB_RAIL": {
+        "items": [
+          "PSB-10",
+          "PSB-12",
+          "PSB-14",
+          "PSB-16",
+          "PSB-20",
+          "PSB-25"
+        ],
+        "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/psb_single.JPG"
+      },
+      "PSB_Headed_Anchor": {
+        "Single": {
+          "items": [
+            "PSB_Single_10",
+            "PSB_Single_12",
+            "PSB_Single_14",
+            "PSB_Single_16",
+            "PSB_Single_20",
+            "PSB_Single_25",
+            "PSB_Single_28",
+            "PSB_Single_32"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PSB%20images/PSB%20Headed%20anchors.jpg"
+        },
+        "Double": {
+          "items": [
+            "PSB_Double_10",
+            "PSB_Double_12",
+            "PSB_Double_14",
+            "PSB_Double_16",
+            "PSB_Double_20",
+            "PSB_Double_25",
+            "PSB_Double_28",
+            "PSB_Double_32"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PSB%20images/PSB%20-%20Double.png"
+        },
+        "J_Type": {
+          "items": [
+            "PSB_J_10",
+            "PSB_J_12",
+            "PSB_J_14",
+            "PSB_J_16",
+            "PSB_J_20",
+            "PSB_J_25",
+            "PSB_J_28",
+            "PSB_J_32"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/PSB%20images/PSB%20-%20J.png"
+        },
+        "S_Type": {
+          "items": [
+            "PSB_S_10",
+            "PSB_S_12",
+            "PSB_S_14",
+            "PSB_S_16",
+            "PSB_S_20",
+            "PSB_S_25"
+          ],
+          "img": "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/psb_single.JPG"
+        }
+      }
+    },
+    "MODIX_Rebar_Couplers": {
+      "MODIX_SM": {
+        "items": [
+          "SM_10",
+          "SM_12",
+          "SM_14",
+          "SM_16",
+          "SM_20",
+          "SM_25",
+          "SM_28",
+          "SM_32"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "MODIX_KM": {
+        "items": [
+          "KM_10",
+          "KM_12",
+          "KM_14",
+          "KM_16",
+          "KM_20",
+          "KM_25",
+          "KM_28"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "MODIX_PM": {
+        "items": [
+          "PM_10",
+          "PM_12",
+          "PM_14",
+          "PM_16",
+          "PM_20",
+          "PM_25",
+          "PM_28",
+          "PM_32"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "MODIX_EM": {
+        "items": [
+          "EM_10",
+          "EM_12",
+          "EM_14",
+          "EM_16",
+          "EM_20",
+          "EM_25",
+          "EM_28",
+          "EM_32"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "MODIX_AM": {
+        "items": [
+          "AM_10",
+          "AM_12",
+          "AM_14",
+          "AM_16",
+          "AM_20",
+          "AM_25",
+          "AM_28",
+          "AM_32"
+        ],
+        "img": "placeholder_image_url"
+      }
+    },
+    "STUDIX_Headed_Connector": {
+      "STUDIX_A": {
+        "items": [
+          "STUDIX_12A",
+          "STUDIX_14A",
+          "STUDIX_16A",
+          "STUDIX_20A",
+          "STUDIX_25A"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "STUDIX_B": {
+        "items": [
+          "STUDIX_12B",
+          "STUDIX_14B",
+          "STUDIX_16B",
+          "STUDIX_20B",
+          "STUDIX_25B"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "STUDIX_D": {
+        "items": [
+          "STUDIX_12D",
+          "STUDIX_14D",
+          "STUDIX_16D",
+          "STUDIX_20D",
+          "STUDIX_25D"
+        ],
+        "img": "placeholder_image_url"
+      }
+    }
+  },
+  "Concrete_Floor_Products": {
+    "Free_Movement_Joints": {
+      "TERAJOINT": {
+        "items": [
+          "TJ5-90-3000",
+          "TJ5-115-3000",
+          "TJ5-135-3000",
+          "TJ5-160-3000",
+          "TJ6-185-3000",
+          "TJ6-215-3000",
+          "TJ6-230-3000",
+          "TJ6-245-3000"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "TERAJOINT_STRONG": {
+        "items": [
+          "TJS6-90-3000",
+          "TJS6-115-3000",
+          "TJS6-135-3000",
+          "TJS6-160-3000",
+          "TJS6-185-3000",
+          "TJS6-215-3000",
+          "TJS6-230-3000",
+          "TJS6-245-3000",
+          "TJS8-135-3000",
+          "TJS8-160-3000",
+          "TJS8-185-3000",
+          "TJS8-215-3000",
+          "TJS8-230-3000",
+          "TJS8-245-3000"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "TERAJOINT_X_Junction": {
+        "items": [
+          "TJX-90",
+          "TJX-115",
+          "TJX-135",
+          "TJX-160",
+          "TJX-185",
+          "TJX-215",
+          "TJX-230",
+          "TJX-245"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "TERAJOINT_T_Junction": {
+        "items": [
+          "TJT-90",
+          "TJT-115",
+          "TJT-135",
+          "TJT-160",
+          "TJT-185",
+          "TJT-215",
+          "TJT-230",
+          "TJT-245"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "WAWEJOINT": {
+        "items": [
+          "WJ6-90-2000",
+          "WJ6-115-2000",
+          "WJ6-135-2000",
+          "WJ6-160-2000",
+          "WJ6-185-2000",
+          "WJ6-215-2000",
+          "WJ6-230-2000",
+          "WJ6-245-2000"
+        ],
+        "img": "placeholder_image_url"
+      }
+    },
+    "Screed_Rails": {
+      "UNIRAIL": {
+        "items": [
+          "UNIRAIL_40-60-3000",
+          "UNIRAIL_70-120_Installation_foot"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "UNIFORM_Europe_Russia": {
+        "items": [
+          "UNIFORM_5-150-3000",
+          "UNIFORM_6-140-3000",
+          "UNIFORM_6-140-3000_EX"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "UNIFORM_UK_Gulf_APAC_USA": {
+        "items": [
+          "UNIFORM_6-140-3000_RD",
+          "UNIFORM_6-140-3000_EX"
+        ],
+        "img": "placeholder_image_url"
+      }
+    },
+    "Load_Transfer_Systems": {
+      "Dowels_Europe_Russia": {
+        "items": [
+          "TERADOWEL_Circular_TDC6",
+          "ULTRADOWEL_Rectangular_UDR8"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "Dowels_UK_Gulf_APAC_USA": {
+        "items": [
+          "TERADOWEL_Rectangular_TDR6",
+          "ULTRADOWEL_Rectangular_UDR8"
+        ],
+        "img": "placeholder_image_url"
+      }
+    },
+    "Rebar_Starters": {
+      "ARBOX": {
+        "items": [
+          "ARBOX_A",
+          "ARBOX_A-8-150-85",
+          "ARBOX_A-10-150-85",
+          "ARBOX_A-8-150-115",
+          "ARBOX_A-10-150-115",
+          "ARBOX_A-12-150-115",
+          "ARBOX_A-8-150-145",
+          "ARBOX_A-10-150-145",
+          "ARBOX_A-12-150-145",
+          "ARBOX_A-8-150-175",
+          "ARBOX_A-10-150-175",
+          "ARBOX_A-12-150-175",
+          "ARBOX_A-8-150-205",
+          "ARBOX_A-10-150-205",
+          "ARBOX_A-12-150-205",
+          "ARBOX_A-8-150-225",
+          "ARBOX_A-10-150-225",
+          "ARBOX_A-12-150-225",
+          "ARBOX_K",
+          "ARBOX_K-8-150-85",
+          "ARBOX_K-10-150-85",
+          "ARBOX_K-8-150-115",
+          "ARBOX_K-10-150-115",
+          "ARBOX_K-12-150-115",
+          "ARBOX_K-8-150-145",
+          "ARBOX_K-10-150-145",
+          "ARBOX_K-12-150-145",
+          "ARBOX_K-8-150-175",
+          "ARBOX_K-10-150-175",
+          "ARBOX_K-12-150-175",
+          "ARBOX_K-8-150-205",
+          "ARBOX_K-10-150-205",
+          "ARBOX_K-12-150-205",
+          "ARBOX_K-8-150-225",
+          "ARBOX_K-10-150-225",
+          "ARBOX_K-12-150-225",
+          "ARBOX_C",
+          "ARBOX_C-8-150-85",
+          "ARBOX_C-10-150-85",
+          "ARBOX_C-8-150-115",
+          "ARBOX_C-10-150-115",
+          "ARBOX_C-12-150-115",
+          "ARBOX_C-8-150-145",
+          "ARBOX_C-10-150-145",
+          "ARBOX_C-12-150-145",
+          "ARBOX_C-8-150-175",
+          "ARBOX_C-10-150-175",
+          "ARBOX_C-12-150-175",
+          "ARBOX_C-8-150-205",
+          "ARBOX_C-10-150-205",
+          "ARBOX_C-12-150-205",
+          "ARBOX_C-8-150-225",
+          "ARBOX_C-10-150-225",
+          "ARBOX_C-12-150-225",
+          "ARBOX_L",
+          "ARBOX_L-8-150-45",
+          "ARBOX_L-8-300-45",
+          "ARBOX_L-10-150-60",
+          "ARBOX_L-10-300-60",
+          "ARBOX_L-12-150-75",
+          "ARBOX_L-12-300-75",
+          "ARBOX_J",
+          "ARBOX_J-8-150-45",
+          "ARBOX_J-8-300-45",
+          "ARBOX_J-10-150-60",
+          "ARBOX_J-10-300-60",
+          "ARBOX_J-12-150-75",
+          "ARBOX_J-12-300-75",
+          "ARBOX_I",
+          "ARBOX_I-8-150-45",
+          "ARBOX_I-8-300-45",
+          "ARBOX_I-10-150-60",
+          "ARBOX_I-10-300-60",
+          "ARBOX_I-12-150-75",
+          "ARBOX_I-12-300-75",
+          "ARBOX_Plus",
+          "ARBOX_Plus_A",
+          "ARBOX_Plus_A-8-150-85",
+          "ARBOX_Plus_A-8-200-85",
+          "ARBOX_Plus_A-8-300-85",
+          "ARBOX_Plus_A-10-150-85",
+          "ARBOX_Plus_A-10-200-85",
+          "ARBOX_Plus_A-10-300-85",
+          "ARBOX_Plus_A-8-150-115",
+          "ARBOX_Plus_A-8-200-115",
+          "ARBOX_Plus_A-8-300-115",
+          "ARBOX_Plus_A-10-150-115",
+          "ARBOX_Plus_A-10-200-115",
+          "ARBOX_Plus_A-10-300-115",
+          "ARBOX_Plus_A-12-150-115",
+          "ARBOX_Plus_A-12-200-115",
+          "ARBOX_Plus_A-12-300-115",
+          "ARBOX_Plus_A-8-150-145",
+          "ARBOX_Plus_A-8-200-145",
+          "ARBOX_Plus_A-8-300-145",
+          "ARBOX_Plus_A-10-150-145",
+          "ARBOX_Plus_A-10-200-145",
+          "ARBOX_Plus_A-10-300-145",
+          "ARBOX_Plus_A-12-150-145",
+          "ARBOX_Plus_A-12-200-145",
+          "ARBOX_Plus_A-12-300-145",
+          "ARBOX_Plus_A-8-150-175",
+          "ARBOX_Plus_A-8-200-175",
+          "ARBOX_Plus_A-8-300-175",
+          "ARBOX_Plus_A-10-150-175",
+          "ARBOX_Plus_A-10-200-175",
+          "ARBOX_Plus_A-10-300-175",
+          "ARBOX_Plus_A-12-150-175",
+          "ARBOX_Plus_A-12-200-175",
+          "ARBOX_Plus_A-12-300-175",
+          "ARBOX_Plus_A-8-150-205",
+          "ARBOX_Plus_A-8-200-205",
+          "ARBOX_Plus_A-8-300-205",
+          "ARBOX_Plus_A-10-150-205",
+          "ARBOX_Plus_A-10-200-205",
+          "ARBOX_Plus_A-10-300-205",
+          "ARBOX_Plus_A-12-150-205",
+          "ARBOX_Plus_A-12-200-205",
+          "ARBOX_Plus_A-12-300-205",
+          "ARBOX_Plus_A-8-150-225",
+          "ARBOX_Plus_A-8-200-225",
+          "ARBOX_Plus_A-8-300-225",
+          "ARBOX_Plus_A-10-150-225",
+          "ARBOX_Plus_A-10-200-225",
+          "ARBOX_Plus_A-10-300-225",
+          "ARBOX_Plus_A-12-150-225",
+          "ARBOX_Plus_A-12-200-225",
+          "ARBOX_Plus_A-12-300-225",
+          "ARBOX_Plus_K",
+          "ARBOX_Plus_K-8-150-85",
+          "ARBOX_Plus_K-8-200-85",
+          "ARBOX_Plus_K-8-300-85",
+          "ARBOX_Plus_K-10-150-85",
+          "ARBOX_Plus_K-10-200-85",
+          "ARBOX_Plus_K-10-300-85",
+          "ARBOX_Plus_K-8-150-115",
+          "ARBOX_Plus_K-8-200-115",
+          "ARBOX_Plus_K-8-300-115",
+          "ARBOX_Plus_K-10-150-115",
+          "ARBOX_Plus_K-10-200-115",
+          "ARBOX_Plus_K-10-300-115",
+          "ARBOX_Plus_K-12-150-115",
+          "ARBOX_Plus_K-12-200-115",
+          "ARBOX_Plus_K-12-300-115",
+          "ARBOX_Plus_K-8-150-145",
+          "ARBOX_Plus_K-8-200-145",
+          "ARBOX_Plus_K-8-300-145",
+          "ARBOX_Plus_K-10-150-145",
+          "ARBOX_Plus_K-10-200-145",
+          "ARBOX_Plus_K-10-300-145",
+          "ARBOX_Plus_K-12-150-145",
+          "ARBOX_Plus_K-12-200-145",
+          "ARBOX_Plus_K-12-300-145"
+        ],
+        "img": "placeholder_image_url"
+      }
+    }
+  },
+  "Deltabeams": {
+    "Intermediate_Beam_D": {
+      "items": [
+        "D20-200",
+        "D20-300",
+        "D20-400",
+        "D22-300",
+        "D22-400",
+        "D25-300",
+        "D25-400",
+        "D26-300",
+        "D26-400",
+        "D30-300",
+        "D30-400",
+        "D32-300",
+        "D32-400",
+        "D32-500",
+        "D37-400",
+        "D37-500",
+        "D40-400",
+        "D40-500",
+        "D40-600",
+        "D50-500",
+        "D50-600",
+        "D20-500",
+        "D22-500",
+        "D25-500",
+        "D25-600",
+        "D26-500",
+        "D26-600",
+        "D30-500",
+        "D30-600",
+        "D32-600",
+        "D37-600",
+        "D45-500",
+        "D45-600",
+        "D50-700",
+        "D60-600",
+        "D60-700",
+        "D65-800",
+        "D70-900"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "Edge_Beam_DR": {
+      "items": [
+        "DR20-215",
+        "DR20-245",
+        "DR22-250",
+        "DR25-260",
+        "DR26-230",
+        "DR26-260",
+        "DR26-290",
+        "DR26-325",
+        "DR30-270",
+        "DR32-250",
+        "DR32-285",
+        "DR32-310",
+        "DR32-365",
+        "DR37-325",
+        "DR40-295",
+        "DR50-350",
+        "DR45-330",
+        "DR60-500",
+        "DR18-230",
+        "DR20-345",
+        "DR25-290",
+        "DR30-245",
+        "DR30-325",
+        "DR35-310",
+        "DR37-480",
+        "DR40-350",
+        "DR40-500",
+        "DR45-295",
+        "DR50-325",
+        "DR50-400",
+        "DR50-465",
+        "DR50-500",
+        "DR55-350",
+        "DR60-325",
+        "DR65-500",
+        "DR70-500"
+      ],
+      "img": "placeholder_image_url"
+    }
+  },
+  "Bracing_System": {
+    "BESISTA_Tension_Rods": {
+      "items": [
+        "M8",
+        "M10",
+        "M12",
+        "M14",
+        "M16",
+        "M18",
+        "M20",
+        "M22",
+        "M24",
+        "M27",
+        "M30",
+        "M33",
+        "M36",
+        "M39",
+        "M42",
+        "M45",
+        "M48",
+        "M52",
+        "M56",
+        "M60",
+        "M64",
+        "M68",
+        "M72",
+        "M76"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "BESISTA_Tension_Rods_Cross_Anchor": {
+      "items": [
+        "M8",
+        "M10",
+        "M12",
+        "M14",
+        "M16",
+        "M18",
+        "M20",
+        "M22",
+        "M24",
+        "M27",
+        "M30",
+        "M33",
+        "M36",
+        "M39",
+        "M42",
+        "M45",
+        "M48",
+        "M52",
+        "M56",
+        "M60",
+        "M64",
+        "M68",
+        "M72",
+        "M76"
+      ],
+      "img": "placeholder_image_url"
+    }
+  },
+  "Hidden_Corbels": {
+    "Beam_Corbels": {
+      "items": [
+        "PCs_Corbel",
+        "PCs_2",
+        "PCs_3",
+        "PCs_5",
+        "PCs_7",
+        "PCs_10",
+        "PCs_15"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "Single_Corbels": {
+      "items": [
+        "PCs_2_single",
+        "PCs_3_single",
+        "PCs_5_single",
+        "PCs_7_single",
+        "PCs_10_single",
+        "PCs_15_single"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "Double_Corbels": {
+      "items": [
+        "PCs_2_double",
+        "PCs_3_double",
+        "PCs_5_double",
+        "PCs_7_double",
+        "PCs_10_double",
+        "PCs_15_double"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "Multiple_Corbels": {
+      "items": [
+        "PCs_2_multiple",
+        "PCs_3_multiple",
+        "PCs_5_multiple",
+        "PCs_7_multiple",
+        "PCs_10_multiple"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "UP_Corbels": {
+      "Standard": {
+        "items": [
+          "PCs_UP_Corbel",
+          "PCs_2_Up",
+          "PCs_3_Up",
+          "PCs_5_Up",
+          "PCs_7_Up",
+          "PCs_10_Up"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "Single_UP_Corbels": {
+        "items": [
+          "PCs_2_Up_single",
+          "PCs_3_Up_single",
+          "PCs_5_Up_single",
+          "PCs_7_Up_single",
+          "PCs_10_Up_single"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "Double_UP_Corbels": {
+        "items": [
+          "PCs_2_Up_double",
+          "PCs_3_Up_double",
+          "PCs_5_Up_double",
+          "PCs_7_Up_double",
+          "PCs_10_Up_double"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "Multiple_UP_Corbels": {
+        "items": [
+          "PCs_2_Up_multiple",
+          "PCs_3_Up_multiple",
+          "PCs_5_Up_multiple",
+          "PCs_7_Up_multiple",
+          "PCs_10_Up_multiple"
+        ],
+        "img": "placeholder_image_url"
+      }
+    },
+    "PC_Beam_Shoe": {
+      "Low_Strength": {
+        "items": [
+          "PC_2-L",
+          "PC_3-L",
+          "PC_5-L",
+          "PC_7-L",
+          "PC_10-L",
+          "PC_15-L"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "High_Strength": {
+        "items": [
+          "PC_2-H",
+          "PC_3-H",
+          "PC_5-H",
+          "PC_7-H",
+          "PC_10-H",
+          "PC_15-H"
+        ],
+        "img": "placeholder_image_url"
+      }
+    },
+    "Slab_Corbels": {
+      "PETRA_Slab_Hanger": {
+        "items": [
+          "PETRA",
+          "PETRA_150-1200",
+          "PETRA_150-2400",
+          "PETRA_175-1200",
+          "PETRA_175-2400",
+          "PETRA_200-1200",
+          "PETRA_200-2400",
+          "PETRA_220-1200",
+          "PETRA_220-2400",
+          "PETRA_265-1200",
+          "PETRA_265-2400",
+          "PETRA_300-1200",
+          "PETRA_300-2400",
+          "PETRA_320-1200",
+          "PETRA_320-2400",
+          "PETRA_350-1200",
+          "PETRA_350-2400",
+          "PETRA_370-1200",
+          "PETRA_370-2400",
+          "PETRA_400-1200",
+          "PETRA_400-2400",
+          "PETRA_450-1200",
+          "PETRA_450-2400",
+          "PETRA_500-1200",
+          "PETRA_500-2400"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "PETRA_Strong": {
+        "items": [
+          "PETRA_Strong_150-1200",
+          "PETRA_Strong_175-1200",
+          "PETRA_Strong_200-1200",
+          "PETRA_Strong_220-1200",
+          "PETRA_Strong_265-1200",
+          "PETRA_Strong_300-1200",
+          "PETRA_Strong_320-1200",
+          "PETRA_Strong_350-1200",
+          "PETRA_Strong_370-1200",
+          "PETRA_Strong_400-1200",
+          "PETRA_Strong_450-1200",
+          "PETRA_Strong_500-1200"
+        ],
+        "img": "placeholder_image_url"
+      }
+    },
+    "PETRA_without_fire_rebar": {
+      "items": [
+        "PETRA_150-1200_without_fire_rebar",
+        "PETRA_200-1200_without_fire_rebar",
+        "PETRA_220-1200_without_fire_rebar",
+        "PETRA_265-1200_without_fire_rebar",
+        "PETRA_300-1200_without_fire_rebar",
+        "PETRA_320-1200_without_fire_rebar",
+        "PETRA_350-1200_without_fire_rebar",
+        "PETRA_370-1200_without_fire_rebar",
+        "PETRA_400-1200_without_fire_rebar",
+        "PETRA_450-1200_without_fire_rebar",
+        "PETRA_500-1200_without_fire_rebar"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "PRK_Edge_Hangers": {
+      "items": [
+        "PRK-200",
+        "PRK-265",
+        "PRK-320"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "STAIRPOD": {
+      "items": [
+        "STAIRPOD_130x90",
+        "STAIRPOD_150x100"
+      ],
+      "img": "placeholder_image_url"
+    }
+  },
+  "Balcony_Connections": {
+    "PS_Balcony_Slab_Connector": {
+      "items": [
+        "PS_110",
+        "PS_170",
+        "PS_200",
+        "PS_230"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "PIFOREX": {
+      "items": [
+        "PIFOREX"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "SLADEX": {
+      "items": [
+        "A1",
+        "A2",
+        "B1",
+        "B2"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "SLADEX_Tube": {
+      "items": [
+        "A1",
+        "A2",
+        "B1",
+        "B2"
+      ],
+      "img": "placeholder_image_url"
+    },
+    "EBEA": {
+      "EBEA_100": {
+        "items": [
+          "Bending_RFT_2x10",
+          "Bending_RFT_2x14",
+          "Bending_RFT_4x10",
+          "Bending_RFT_6x10",
+          "Bending_RFT_4x14",
+          "Bending_RFT_6x14",
+          "Bending_RFT_8x14",
+          "Bending_RFT_10x14"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "EBEA_E-100": {
+        "items": [
+          "Bending_RFT_2x10",
+          "Bending_RFT_2x14",
+          "Bending_RFT_4x10",
+          "Bending_RFT_6x10",
+          "Bending_RFT_4x14",
+          "Bending_RFT_6x14",
+          "Bending_RFT_8x14",
+          "Bending_RFT_10x14"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "EBEA_200": {
+        "items": [
+          "Bending_RFT_6x10",
+          "Bending_RFT_4x14",
+          "Bending_RFT_6x14",
+          "Bending_RFT_8x14"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "EBEA_500": {
+        "items": [
+          "1_shear_plate",
+          "2_shear_plates",
+          "3_shear_plates",
+          "4_shear_plates",
+          "5_shear_plates"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "EBEA_600": {
+        "items": [
+          "Shear_RFT_8mm",
+          "Shear_RFT_10mm"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "EBEA_700": {
+        "items": [
+          "Bending_RFT_2x10x120mm",
+          "Bending_RFT_3x10x120mm",
+          "Bending_RFT_4x10x120mm",
+          "Bending_RFT_6x10x120mm",
+          "Bending_RFT_2x10x160mm",
+          "Bending_RFT_3x10x160mm",
+          "Bending_RFT_4x10x160mm",
+          "Bending_RFT_6x10x160mm"
+        ],
+        "img": "placeholder_image_url"
+      },
+      "EBEA_800": {
+        "H110": {
+          "items": [
+            "1_plate",
+            "2_plates",
+            "3_plates",
+            "4_plates",
+            "5_plates",
+            "6_plates"
+          ],
+          "img": "placeholder_image_url"
+        },
+        "H130": {
+          "items": [
+            "1_plate",
+            "2_plates",
+            "3_plates",
+            "4_plates",
+            "5_plates",
+            "6_plates"
+          ],
+          "img": "placeholder_image_url"
+        },
+        "H150": {
+          "items": [
+            "1_plate",
+            "2_plates",
+            "3_plates",
+            "4_plates",
+            "5_plates",
+            "6_plates"
+          ],
+          "img": "placeholder_image_url"
+        }
+      }
+    }
+  }
+}

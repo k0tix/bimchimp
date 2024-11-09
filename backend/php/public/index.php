@@ -27,26 +27,18 @@ $app->get('/', function (Request $request, Response $response) {
 });
 
 $app->post('/files/add', function (Request $request, Response $response, $args) use($db) {
+    $data = json_decode($request->getBody()->getContents(), true);
+    $title = $data['title'];
     // datapoikien koodi TODO
-
-
-
-
     // muunto ifc-> weetabix
     $newFile = tempnam(__DIR__ . '/../tmp', 'ifc');
     $oldFile = $newFile . ".ifc";
-    /** @var UploadedFile $file */
-    $file = $request->getUploadedFiles()["file"];
-    $file->moveTo($oldFile);
+    file_put_contents($oldFile, base64_decode($data['file']));
+    exec(__DIR__ . "/../WexBIM/win-x64/CreateWexBIM.exe $oldFile $newFile");
 
-    $out = "";
-    $cmd = __DIR__ . "/../WexBIM/win-x64/CreateWexBIM.exe $oldFile $newFile";
-    exec($cmd, $out);
-
-    $title = $file->getClientFilename();
-    // tietokantaan data TODO
+    
     $db->prepare("INSERT INTO model (title, fileData) values (?,?)")->execute([$title, file_get_contents($newFile)]);
-    return $response;
+    return new JsonResponse(["id" => $db->lastInsertId()]);
 });
 
 $app->get('/files/list', function (Request $request, Response $response) use($db) {
@@ -62,5 +54,47 @@ $app->get('/files/{id}', function (Request $request, Response $response, $args) 
     $data = $query->fetch(PDO::FETCH_ASSOC);
     return new JsonResponse(["id" => $data['id'], "title" => $data['title'], "file" => base64_encode($data['fileData'])]);
 });
+
+$app->get('/files/{id}/products', function (Request $request, Response $response, $args) use($db) {
+    $query = $db->prepare("SELECT id, product_id FROM metadata WHERE id=?");
+    $query->execute([$args['id']]);
+    $data = $query->fetch(PDO::FETCH_ASSOC);
+    return new JsonResponse($data);
+});
+
+$app->post('/files/{model_id}/products', function (Request $request, Response $response, $args) use($db) {
+    $data = json_decode($request->getBody()->getContents(), true);
+    $db->prepare("UPDATE metadata SET product_id=? WHERE id=? AND model_id=?")->execute([$data["product_id"], $data['id'], $args['model_id']]);
+    return $response;
+});
+$app->get('/products', function (Request $request, Response $response, $args) {
+    $search = isset($request->getQueryParams()['search']) ? $request->getQueryParams()['search'] : "";
+    $data = json_decode(file_get_contents(__DIR__ ."/../transformed_peikko_products.json"), true);
+
+
+    $parsedData = filterData($data);
+    if($search != ""){
+        $parsedData = array_filter($parsedData, function($item) use($search){
+            return strpos($item["product_id"], $search) !== false;
+        });
+    }
+    return new JsonResponse($parsedData);
+});
+function filterData($data) {
+    $parsedData = [];
+    foreach ($data as $key => $value) {
+        if(is_array($value)){
+            if(in_array("items", array_keys($value))){
+                foreach ($value["items"] as $key1 => $value1) {
+                    $parsedData[] = ["product_id" => $value1, "img" => $value["img"]];
+                }
+            } else {
+                $parsedData = array_merge($parsedData, filterData($value));
+            }
+            
+        }
+    }
+    return $parsedData;
+};
 
 $app->run();
