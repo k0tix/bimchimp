@@ -12,6 +12,8 @@ classifiers = ["Programming Langauge :: Python :: 3"]
 dependencies = [
     "click",
     "fastapi",
+    "flask",
+    "gunicorn",
     "pydantic",
     "pydantic-settings",
     "uvicorn",
