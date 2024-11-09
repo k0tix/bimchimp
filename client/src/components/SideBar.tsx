@@ -14,17 +14,32 @@ import {
 import { Input } from "./ui/input";
 import { mockApi } from "../lib/api";
 import { File, Icon } from "lucide-react";
+import { fileToBase64 } from "../lib/utils";
+import { useProducts } from "./contexts/files";
 
 const SideBar: React.FC = () => {
-  const [filesLoading, setFilesLoading] = React.useState(false);
-  const [availableFiles, setAvailableFiles] = React.useState<string[]>([]);
+  const { availableFiles, setAvailableFiles, currentFile, setCurrentFile } =
+    useProducts();
 
-  React.useEffect(() => {
+  const [filesLoading, setFilesLoading] = React.useState(false);
+
+  const loadFiles = async () => {
     setFilesLoading(true);
+
     mockApi.getAvailableFiles().then((files) => {
       setAvailableFiles(files);
       setFilesLoading(false);
     });
+  };
+
+  React.useEffect(() => {
+    loadFiles();
+
+    const interval = setInterval(() => {
+      loadFiles();
+    }, 15000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -41,15 +56,17 @@ const SideBar: React.FC = () => {
 
                   {availableFiles.map((file) => (
                     <SidebarMenuButton
-                      key={file}
+                      className="mb-1"
+                      isActive={currentFile?.id === file.id}
+                      key={file.id}
                       onClick={async () => {
-                        const fileblob = await mockApi.getFileBlob(file);
-
+                        const fileblob = await mockApi.getFileBlob(file.id);
+                        setCurrentFile(file);
                         PubSub.publish("loadBimFile", fileblob);
                       }}
                     >
                       <File size={24} />
-                      {file}
+                      {file.name}
                     </SidebarMenuButton>
                   ))}
                 </SidebarMenuItem>
@@ -78,9 +95,17 @@ const SideBar: React.FC = () => {
                     type="file"
                     className="bg-card h-16 items-center text-center"
                     onChange={async (e) => {
-                      // do nothing for now
-                      return;
-                      // const file = e.target.files?.[0];
+                      const file = e.target.files?.[0];
+
+                      if (!file) {
+                        return;
+                      }
+
+                      const fileName = file.name.split(".")[0];
+                      const fileAsBase64 = await fileToBase64(file);
+
+                      console.log("File as base64:", fileAsBase64);
+
                       // if (file) {
                       //   const formData = new FormData();
                       //   formData.append("file", file);

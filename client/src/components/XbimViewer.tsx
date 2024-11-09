@@ -2,7 +2,12 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import "@xbim/viewer";
-import { Viewer, ViewerEventMap, ViewType } from "@xbim/viewer";
+import {
+  Viewer,
+  ViewerEventMap,
+  ViewerInteractionEvent,
+  ViewType,
+} from "@xbim/viewer";
 import { toast } from "sonner";
 import { usePubSub } from "./contexts/pubsub";
 import { cn } from "../lib/utils";
@@ -38,7 +43,7 @@ const handledEvents: PossibleEvent[] = [
   // "touchcancel",
   // "touchend",
   // "touchmove",
-  // "touchstart",
+  "touchstart",
   // "pointercancel",
   // "pointerdown",
   // "pointerenter",
@@ -74,15 +79,16 @@ const XbimViewer: React.FC<XbimViewerProps> = ({ className }) => {
 
       handledEvents.forEach((event) => {
         newViewer.on(event, (e: any) => {
-          console.log(`Event: ${event}`, e);
           PubSub.publish("viewerEvent", { event, data: e });
 
-          if (event === "click") {
+          if (event === "click" || event === "touchstart") {
             const isProduct = !!e.id;
 
             if (!isProduct) {
               return;
             }
+
+            PubSub.publish("productSelected", e.id);
 
             const xyz = isProduct
               ? Array.from(e.xyz).map((num: any) => Math.round(num * 100) / 100)
@@ -154,3 +160,54 @@ const XbimViewer: React.FC<XbimViewerProps> = ({ className }) => {
 };
 
 export default XbimViewer;
+
+/*
+WIP touch event handling
+        if (event === "mousedown") {
+            let touchMoved = false;
+
+            const handleTouchMove = () => {
+              touchMoved = true;
+            };
+
+            const handleTouchEnd = () => {
+              if (!touchMoved) {
+                const isProduct = !!e.id;
+
+                if (!isProduct) {
+                  return;
+                }
+
+                const xyz = isProduct
+                  ? Array.from(e.xyz).map(
+                      (num: any) => Math.round(num * 100) / 100
+                    )
+                  : "";
+
+                toast("Tap event received", {
+                  description: isProduct
+                    ? `You tapped at product ${e.id} at ${xyz}`
+                    : undefined,
+                  action: {
+                    label: "Ok",
+                    onClick: () => {},
+                  },
+                });
+              }
+
+              canvasRef.current?.removeEventListener(
+                "mousemove",
+                handleTouchMove
+              );
+              canvasRef.current?.removeEventListener(
+                "mouseend",
+                handleTouchEnd
+              );
+            };
+
+            canvasRef.current?.addEventListener("mousemove", handleTouchMove);
+            canvasRef.current?.addEventListener("mouseend", handleTouchEnd);
+          }
+
+
+*/

@@ -14,10 +14,21 @@ import { Providers } from "./components/Providers";
 import SideBar from "./components/SideBar";
 import XbimViewer from "./components/XbimViewer";
 import { SidebarTrigger } from "./components/ui/sidebar";
+import { useProducts } from "./components/contexts/files";
 
 function App() {
   return (
     <Providers>
+      <Dashboard />
+    </Providers>
+  );
+}
+
+const Dashboard: React.FC = () => {
+  const products = useProducts();
+
+  return (
+    <>
       <SideBar />
       <div className="relative w-screen h-screen">
         <XbimViewer className="h-screen w-full" />
@@ -39,8 +50,8 @@ function App() {
           </div>
         </div>
       </div>
-    </Providers>
+    </>
   );
-}
+};
 
 export default App;
