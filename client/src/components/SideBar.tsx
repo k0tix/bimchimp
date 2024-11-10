@@ -12,10 +12,22 @@ import {
   SidebarMenuItem,
 } from "./ui/sidebar";
 import { Input } from "./ui/input";
-import { mockApi } from "../lib/api";
+import { api, api as mockApi } from "../lib/api";
 import { File, Icon } from "lucide-react";
 import { fileToBase64 } from "../lib/utils";
 import { useProducts } from "./contexts/files";
+import { toast } from "sonner";
+import Spinner from "./Spinner";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "./ui/table";
+import { Separator } from "@radix-ui/react-separator";
 
 const SideBar: React.FC = () => {
   const { availableFiles, setAvailableFiles, currentFile, setCurrentFile } =
@@ -46,15 +58,23 @@ const SideBar: React.FC = () => {
   return (
     <>
       <Sidebar>
-        <SidebarHeader>BIM CHIMP 🙉</SidebarHeader>
+        <SidebarHeader>
+          <div className="flex fle-row items-center">
+            <img src="/chimp.jpg" alt="Logo" className="rounded-xl w-16 h-16" />
+            <span className="text-lg font-mono ml-8">BIMCHIMP</span>
+          </div>
+        </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>Processed files</SidebarGroupLabel>
+            <SidebarGroupLabel>
+              <div className="flex justify-between items-center w-full">
+                <span>Processed files</span>
+                {filesLoading && <Spinner />}
+              </div>
+            </SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
-                <SidebarMenuItem>
-                  {filesLoading && "Loading files..."}
-
+                <SidebarMenuItem className="overflow-y-auto max-h-[50vh]">
                   {availableFiles.map((file) => (
                     <SidebarMenuButton
                       className="mb-1"
@@ -62,16 +82,28 @@ const SideBar: React.FC = () => {
                       key={file.id}
                       onClick={async () => {
                         const fileblob = await mockApi.getFileBlob(file.id);
+
+                        if (fileblob.size === 0) {
+                          toast("Failed to load file", {
+                            description: `Failed to load file ${file.title}, it seems to be empty :)`,
+                            action: {
+                              label: "Ok",
+                              onClick: () => {},
+                            },
+                          });
+
+                          return;
+                        }
+
                         setCurrentFile(file);
                         PubSub.publish("loadBimFile", fileblob);
                       }}
                     >
                       <File size={24} />
-                      {file.name}
+                      {file.title}
                     </SidebarMenuButton>
                   ))}
                 </SidebarMenuItem>
-
                 <div className="flex items-center gap-4" data-id="1">
                   <div
                     data-orientation="horizontal"
@@ -89,7 +121,6 @@ const SideBar: React.FC = () => {
                     data-id="4"
                   ></div>
                 </div>
-
                 <SidebarMenuItem>
                   <Input
                     id="ifc-file"
@@ -102,33 +133,36 @@ const SideBar: React.FC = () => {
                         return;
                       }
 
-                      const fileName = file.name.split(".")[0];
-                      const fileAsBase64 = await fileToBase64(file);
+                      const splittedFileName = file.name.split(".");
+                      const fileName = splittedFileName[0];
+                      const fileExtension = splittedFileName[1];
 
-                      console.log("File as base64:", fileAsBase64);
+                      if (fileExtension !== "ifc") {
+                        toast("Invalid file type", {
+                          description: "Please upload an IFC file",
+                          action: {
+                            label: "Ok",
+                            onClick: () => {},
+                          },
+                        });
 
-                      // if (file) {
-                      //   const formData = new FormData();
-                      //   formData.append("file", file);
+                        // Reset the input
+                        e.target.value = "";
 
-                      //   try {
-                      //     const response = await fetch("/upload", {
-                      //       method: "POST",
-                      //       body: formData,
-                      //     });
+                        return;
+                      }
 
-                      //     if (response.ok) {
-                      //       const result = await response.json();
-                      //       const wexbimFile = result.wexbimFile;
+                      api.uploadFile(file).then((fileId) => {
+                        toast("File uploaded", {
+                          description: `File ${fileName} uploaded successfully, id: ${fileId}`,
+                          action: {
+                            label: "Ok",
+                            onClick: () => {},
+                          },
+                        });
 
-                      //       PubSub.publish("loadBimFile", wexbimFile);
-                      //     } else {
-                      //       console.error("Failed to upload file");
-                      //     }
-                      //   } catch (error) {
-                      //     console.error("Error uploading file:", error);
-                      //   }
-                      // }
+                        e.target.value = "";
+                      });
                     }}
                   />
                 </SidebarMenuItem>
@@ -137,7 +171,53 @@ const SideBar: React.FC = () => {
           </SidebarGroup>
           <SidebarGroup />
         </SidebarContent>
-        <SidebarFooter />
+        <SidebarFooter>
+          {currentFile && (
+            <>
+              {currentFile.stats.products.length > 0 && (
+                <Table className="bg-card round-xl">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-[100px]">Product</TableHead>
+                      <TableHead>Count</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {currentFile.stats.products.map((stat) => (
+                      <TableRow key={stat.label ?? "Not selected"}>
+                        <TableCell>{stat.label ?? "Not selected"}</TableCell>
+                        <TableCell>{stat.amount}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              )}
+              {currentFile.stats.clash_types.length > 0 && (
+                <Table className="bg-card round-xl">
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead className="w-[100px]">Joint</TableHead>
+                      <TableHead>Count</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {currentFile.stats.clash_types.map((stat) => (
+                      <TableRow key={stat.label ?? "Unknown"}>
+                        <TableCell>{stat.label ?? "Unknown"}</TableCell>
+                        <TableCell>{stat.amount}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              )}
+            </>
+          )}
+
+          <div className="flex flex-row items-center justify-between mt-4">
+            <span className="text-xs">BIMCHIMP 2024</span>
+            <span className="text-xs">v1.0.0</span>
+          </div>
+        </SidebarFooter>
       </Sidebar>
     </>
   );

@@ -1,50 +1,132 @@
-const API_BASE_URL = "https://your-api-endpoint.com";
+const useProxy = false;
 
-// import json from "../../req.json";
-// import json2 from "../../req2.json";
+const API_BASE_URL = useProxy ? "/api" : "http://51.120.240.58:8080";
 
-import { FileInformation } from "./types";
+import { FileInformation, PeikkoProductData } from "./types";
+import { fileToBase64 } from "./utils";
 
 export async function getAvailableFiles(): Promise<FileInformation[]> {
-  const response = await fetch(`${API_BASE_URL}/fils`);
-  if (!response.ok) {
-    throw new Error("Failed to fetch processed wexbim files");
-  }
-  return response.json();
+  const response = await fetch(`${API_BASE_URL}/files/list`);
+
+  const data = await response.json();
+  console.log(data);
+  return data;
 }
 
 export async function getFileBlob(fileId: number): Promise<Blob> {
-  const response = await fetch(`${API_BASE_URL}/wexbim-files/${fileId}`);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch wexbim file: ${fileId}`);
-  }
-  return response.blob();
+  const response = await fetch(`${API_BASE_URL}/files/${fileId}`);
+
+  const data = await response.json();
+
+  return base64stringToBlob(data.file);
 }
+
+export async function uploadFile(file: File): Promise<number> {
+  const fileAsBase64 = await fileToBase64(file);
+
+  const jsonBody = {
+    title: file.name,
+    file: fileAsBase64,
+  };
+
+  const result = await fetch(`${API_BASE_URL}/files/add`, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(jsonBody),
+  });
+
+  // const data = await result.json();
+
+  // return data.id;
+
+  return -1;
+}
+
+export async function getProducts(): Promise<PeikkoProductData[]> {
+  const response = await fetch(`${API_BASE_URL}/products`);
+
+  const data = await response.json();
+
+  return data;
+}
+
+export async function getProduct(
+  fileId: number,
+  elementId: number
+): Promise<PeikkoProductData | undefined> {
+  const response = await fetch(
+    `${API_BASE_URL}/files/${fileId}/products/${elementId}`
+  );
+
+  const data = await response.json();
+
+  console.log(data);
+
+  if (!data) {
+    return undefined;
+  }
+
+  return data;
+}
+
+export async function updateProduct(
+  fileId: number,
+  elementId: number,
+  productId: string | null
+): Promise<void> {
+  const response = await fetch(`${API_BASE_URL}/files/${fileId}/products`, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      product_id: productId,
+      element_id: elementId,
+    }),
+  });
+
+  // const data = await response.json();
+
+  // return data;
+}
+
 export interface IApi {
   getAvailableFiles(): Promise<FileInformation[]>;
   getFileBlob(fileId: number): Promise<Blob>;
+  uploadFile(file: File): Promise<number>;
+  getProducts(): Promise<PeikkoProductData[]>;
 }
 
 export const api: IApi = {
   getAvailableFiles,
   getFileBlob,
+  uploadFile,
+  getProducts,
 };
 
 const mockFiles = [
   {
     id: 1,
-    name: "space.wexbim",
+    title: "space.wexbim",
   },
   {
     id: 2,
-    name: "c.wexbim",
+    title: "c.wexbim",
+  },
+  {
+    id: 6,
+    title: "aaaa.wexbim",
   },
 ];
 
 export const mockApi: IApi = {
-  getAvailableFiles: async () => mockFiles,
+  getAvailableFiles: async () => [],
   getFileBlob: async (fileId) => {
-    const fileName = mockFiles.find((file) => file.id === fileId)?.name;
+    const fileName = mockFiles.find((file) => file.id === fileId)?.title;
 
     if (!fileName) {
       return new Blob();
@@ -53,6 +135,25 @@ export const mockApi: IApi = {
     const response = await fetch(`/wexbim-files/${fileName}`);
     const blob = await response.blob();
     return blob;
+  },
+  uploadFile: async (file) => {
+    return 1;
+  },
+  getProducts: async () => {
+    return [
+      {
+        product_id: "HPM_20P",
+        img: "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/HPM_Item.jpg",
+      },
+      {
+        product_id: "HPM_16L",
+        img: "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/HPM_Item.jpg",
+      },
+      {
+        product_id: "HULCO_52",
+        img: "https://www.prodlib.com/suppliers_images/Supplier_Peikko/Files/Html%20content/HULCO/HULCO.jpg",
+      },
+    ];
   },
 };
 

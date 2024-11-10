@@ -13,8 +13,26 @@ import { Button } from "@/components/ui/button";
 import { Providers } from "./components/Providers";
 import SideBar from "./components/SideBar";
 import XbimViewer from "./components/XbimViewer";
-import { SidebarTrigger } from "./components/ui/sidebar";
+import { SidebarTrigger, useSidebar } from "./components/ui/sidebar";
 import { useProducts } from "./components/contexts/files";
+import {
+  Box,
+  FileBox,
+  Menu,
+  PanelLeft,
+  ScanSearch,
+  Search,
+} from "lucide-react";
+import { Separator } from "./components/ui/separator";
+import { PeikkoProductData } from "./lib/types";
+import { ComboBoxResponsive } from "./components/ProductUpdateThing";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "./components/ui/card";
+import { usePubSub } from "./components/contexts/pubsub";
 
 function App() {
   return (
@@ -26,16 +44,29 @@ function App() {
 
 const Dashboard: React.FC = () => {
   const products = useProducts();
+  const { toggleSidebar, open } = useSidebar();
 
   return (
     <>
       <SideBar />
-      <div className="relative w-screen h-screen">
+
+      <div className="relative w-screen h-screen overscroll-none">
         <XbimViewer className="h-screen w-full" />
 
+        <div className="absolute bottom-0 right-0 m-8">
+          <PeikkoProductListView products={products.productData} />
+        </div>
+
         <div className="absolute bottom-0 left-0 m-8">
-          <div className="flex items-center space-x-4 p-4 bg-gray-900 rounded-lg shadow-lg">
-            <SidebarTrigger />
+          <div className="flex items-center space-x-4 p-4 bg-emerald-600 rounded-lg shadow-lg">
+            <Button
+              onClick={() => {
+                toggleSidebar();
+              }}
+            >
+              <FileBox />
+              <span className="text-xs">{open ? "Hide" : "Show"} files</span>
+            </Button>
 
             <Button
               onClick={() => {
@@ -43,7 +74,8 @@ const Dashboard: React.FC = () => {
                 console.log("Reset camera");
               }}
             >
-              Fit to screen
+              <Box />
+              Fit
             </Button>
 
             {/* Add more buttons here as needed */}
@@ -51,6 +83,47 @@ const Dashboard: React.FC = () => {
         </div>
       </div>
     </>
+  );
+};
+
+const PeikkoProductListView: React.FC<{ products: PeikkoProductData[] }> = ({
+  products,
+}) => {
+  const PubSub = usePubSub();
+  if (!products.length) {
+    return <></>;
+  }
+
+  return (
+    <Card>
+      <CardContent className="mt-4">
+        {products.map((product, index) =>
+          product.product_id === null ? (
+            <></>
+          ) : (
+            <img
+              key={product.product_id + index}
+              src={product.img ?? "/chimp.jpg"}
+              alt={product.product_id}
+              className="h-32 rounded-sm"
+            />
+          )
+        )}
+      </CardContent>
+
+      {!!products.length && (
+        <CardFooter>
+          <ComboBoxResponsive
+            key={products[0].product_id}
+            onChange={(value) => {
+              console.log("Product updated", value);
+              PubSub.publish("productUpdate", value.length ? value : null);
+            }}
+            initialProduct={products[0].product_id ?? ""}
+          />
+        </CardFooter>
+      )}
+    </Card>
   );
 };
 

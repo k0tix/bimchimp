@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "@xbim/viewer";
 import {
+  State,
   Viewer,
   ViewerEventMap,
   ViewerInteractionEvent,
@@ -22,7 +23,7 @@ type PossibleEvent = keyof ViewerEventMap;
 const handledEvents: PossibleEvent[] = [
   "click",
   // "contextmenu",
-  // "dblclick",
+  //"dblclick",
   // "drag",
   // "dragend",
   // "dragenter",
@@ -53,7 +54,7 @@ const handledEvents: PossibleEvent[] = [
   // "pointerover",
   // "pointerup",
   // "wheel",
-  // "pick",
+  "pick",
   // "hoverpick",
   // "pointerlockchange",
   // "pointerlockerror",
@@ -80,7 +81,6 @@ const XbimViewer: React.FC<XbimViewerProps> = ({ className }) => {
       handledEvents.forEach((event) => {
         newViewer.on(event, (e: any) => {
           PubSub.publish("viewerEvent", { event, data: e });
-
           if (event === "click" || event === "touchstart") {
             const isProduct = !!e.id;
 
@@ -94,15 +94,15 @@ const XbimViewer: React.FC<XbimViewerProps> = ({ className }) => {
               ? Array.from(e.xyz).map((num: any) => Math.round(num * 100) / 100)
               : "";
 
-            toast("Click event received", {
-              description: isProduct
-                ? `You clicked at product ${e.id} at ${xyz}`
-                : undefined,
-              action: {
-                label: "Ok",
-                onClick: () => {},
-              },
-            });
+            // toast("Click event received", {
+            //   description: isProduct
+            //     ? `You clicked at product ${e.id} at ${xyz}`
+            //     : undefined,
+            //   action: {
+            //     label: "Ok",
+            //     onClick: () => {},
+            //   },
+            // });
           }
         });
       });
@@ -153,7 +153,7 @@ const XbimViewer: React.FC<XbimViewerProps> = ({ className }) => {
         <div
           className={cn(
             className,
-            "absolute top-0 left-0 flex items-center justify-center h-full"
+            "absolute top-0 left-0 flex items-center justify-center h-full bg-viewer"
           )}
         >
           No model loaded
