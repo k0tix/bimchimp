@@ -19,6 +19,32 @@ import ifcopenshell
 import numpy as np
 from scipy.spatial.transform import Rotation
 
+COLLISION_THRESHOLD=10
+
+def filter_clashes(model, clashes, clash_type):
+    
+    filtered_clashes = []
+    element_collision_count = {}  # Track the number of clashes each element has
+    
+    for i, clash in enumerate(clashes):
+        element_a = model.by_id(clash.a.id())
+        element_b = model.by_id(clash.b.id())
+        
+        if element_a.id() not in element_collision_count:
+            element_collision_count[element_a.id()] = 0
+        if element_b.id() not in element_collision_count:
+            element_collision_count[element_b.id()] = 0
+        
+        element_collision_count[element_a.id()] += 1
+        element_collision_count[element_b.id()] += 1
+        
+        if element_collision_count[element_a.id()] > COLLISION_THRESHOLD or element_collision_count[element_b.id()] > COLLISION_THRESHOLD:
+            continue
+        
+        filtered_clashes.append(clash)
+    
+    return filtered_clashes
+
 #------------------------------------------------------------------------------
 
 def get_element_material(element: ifcopenshell.entity_instance) -> Dict:
@@ -114,6 +140,7 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
             model.by_type(element_b_type),
             allow_touching=True
         )
+        clashes = filter_clashes(model, clashes, clash_type)
         clash_data["total_clashes"] += len(clashes)
         representation = ifcopenshell.api.geometry.add_mesh_representation(
             model,
