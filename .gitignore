@@ -166,3 +166,5 @@ cython_debug/
 data/*
 
 !data/.gitkeep
+!data/ifc2b64.py
+!data/b642ifc.py
