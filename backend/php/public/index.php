@@ -86,15 +86,33 @@ $app->get('/files/list', function (Request $request, Response $response) use($db
     $query = $db->prepare("SELECT id, title FROM model");
     $query->execute([]);
     $data = $query->fetchAll(PDO::FETCH_ASSOC);
+    $readyData = [];
+    foreach($data as $dat) {
+        
+        $query = $db->prepare("SELECT product_id as label, count(*) as amount FROM metadata WHERE model_id=? GROUP BY product_id");
+        $query->execute([$dat['id']]);
+        $product_counts = $query->fetchAll(PDO::FETCH_ASSOC);   
+    
+    
+        $query = $db->prepare("SELECT clash_type as label, count(*) as amount FROM metadata WHERE model_id=? GROUP BY clash_type");
+        $query->execute([$dat['id']]);
+        $clash_type_counts = $query->fetchAll(PDO::FETCH_ASSOC);
+        $readyData[] = ["id" => $dat['id'], "title" => $dat['title'], "stats" => ["products" => $product_counts, "clash_types" => $clash_type_counts]];
+    }
 
-    return new JsonResponse($data, 200, ["Access-Control-Allow-Origin" => "*"]);
+    return new JsonResponse($readyData, 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 $app->get('/files/{id}', function (Request $request, Response $response, $args) use($db) {
     $query = $db->prepare("SELECT * FROM model WHERE id=?");
     $query->execute([$args['id']]);
     $data = $query->fetch(PDO::FETCH_ASSOC);
-    return new JsonResponse(["id" => $data['id'], "title" => $data['title'], "file" => base64_encode($data['fileData'])], 200, ["Access-Control-Allow-Origin" => "*"]);
+
+    return new JsonResponse([
+        "id" => $data['id'],
+        "title" => $data['title'],
+        "file" => base64_encode($data['fileData']),
+    ], 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 $app->get('/files/{id}/products', function (Request $request, Response $response, $args) use($db) {
