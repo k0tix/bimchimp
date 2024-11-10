@@ -125,11 +125,11 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         
         # Create color rendering for each clash type
         surface_style = model.create_entity("IfcSurfaceStyle", Name=clash_type)
-        rendering = model.create_entity("IfcSurfaceStyleRendering")
-        rendering.SurfaceColour = model.create_entity(
+        color = model.create_entity(
             "IfcColourRgb", Name=clash_type, Red=color_rgb[0], Green=color_rgb[1], Blue=color_rgb[2]
         )
-        surface_style.Styles = [rendering]
+        surface_style.Styles = [color]  # Directly associate IfcColourRgb
+        
         surface_styles[clash_type] = surface_style
 
     # Process each clash type defined in clash_types dictionary
