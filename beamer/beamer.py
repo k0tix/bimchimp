@@ -129,8 +129,8 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
             "IfcColourRgb", Name=clash_type, Red=color_rgb[0], Green=color_rgb[1], Blue=color_rgb[2]
         )
         surface_style.Styles = [color]  # Directly associate IfcColourRgb
-        
         surface_styles[clash_type] = surface_style
+
 
     # Process each clash type defined in clash_types dictionary
     for clash_type, properties in clash_types.items():
@@ -141,6 +141,7 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
             allow_touching=True
         )
         clashes = filter_clashes(model, clashes, clash_type)
+        
         clash_data["total_clashes"] += len(clashes)
         representation = ifcopenshell.api.geometry.add_mesh_representation(
             model,
@@ -155,6 +156,7 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         for i, collision in enumerate(clashes):
             element_a = model.by_id(collision.a.id())
             element_b = model.by_id(collision.b.id())
+
             matrix[:,3][0:3] = list(collision.p1)
             element = ifcopenshell.api.root.create_entity(model, ifc_class="IfcProxy")
             ifcopenshell.api.geometry.edit_object_placement(
