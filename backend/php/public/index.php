@@ -77,7 +77,7 @@ $app->post('/files/add', function (Request $request, Response $response, $args) 
     foreach ($metadata as $key => $value) {
         $prod = null;
         if($key%2==0) $prod = "HPM_16L";
-        $db->prepare("INSERT INTO metadata (element_id, product_id, model_id) values (?,?,?)")->execute([$value["marker_id"], $prod, $modelId]);
+        $db->prepare("INSERT INTO metadata (element_id, product_id, model_id, clash_type) values (?,?,?,?)")->execute([$value["marker_id"], $prod, $modelId, $value["clash_type"]]);
     }
     return new JsonResponse(["id" => $modelId],200, ["Access-Control-Allow-Origin" => "*"]);
 });
@@ -98,19 +98,19 @@ $app->get('/files/{id}', function (Request $request, Response $response, $args) 
 });
 
 $app->get('/files/{id}/products', function (Request $request, Response $response, $args) use($db) {
-    $query = $db->prepare("SELECT element_id, product_id FROM metadata WHERE model_id=?");
+    $query = $db->prepare("SELECT element_id, product_id, clash_type FROM metadata WHERE model_id=?");
     $query->execute([$args['id']]);
     $data = $query->fetchAll(PDO::FETCH_ASSOC);
     return new JsonResponse($data, 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 $app->get('/files/{id}/products/{element_id}', function (Request $request, Response $response, $args) use($db) {
-    $query = $db->prepare("SELECT product_id FROM metadata WHERE model_id=? AND element_id=?");
+    $query = $db->prepare("SELECT product_id, clash_type FROM metadata WHERE model_id=? AND element_id=?");
     $query->execute([$args['id'], $args['element_id']]);
     $data = $query->fetch(PDO::FETCH_ASSOC);
-    if(!isset($data["product_id"])) return new JsonResponse(false, 200, ["Access-Control-Allow-Origin" => "*"]);
-    $foundData = searchProducts($data["product_id"]);
-    return new JsonResponse(["product_id"=>$data["product_id"], "img" => isset($foundData[0])? $foundData[0]["img"]:null], 200, ["Access-Control-Allow-Origin" => "*"]);
+    if(!isset($data) || !$data) return new JsonResponse(false, 200, ["Access-Control-Allow-Origin" => "*"]);
+    $foundData = isset($data["product_id"]) ? searchProducts($data["product_id"]): [];
+    return new JsonResponse(["product_id"=>$data["product_id"], "clash_type"=>$data["clash_type"], "img" => isset($foundData[0])? $foundData[0]["img"]:null], 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 $app->post('/files/{model_id}/products', function (Request $request, Response $response, $args) use($db) {
@@ -125,6 +125,17 @@ $app->get('/products', function (Request $request, Response $response, $args) {
     $parsedData = searchProducts($search);
    
     return new JsonResponse($parsedData, 200, ["Access-Control-Allow-Origin" => "*"]);
+});
+
+$app->get('/files/{model_id}/info', function (Request $request, Response $response, $args) use($db) {
+    $query = $db->prepare("SELECT * FROM model WHERE id=?");
+    $query->execute([$args['model_id']]);
+    $model = $query->fetch(PDO::FETCH_ASSOC);
+
+    $query = $db->prepare("SELECT product_id, count(*) as amount FROM metadata WHERE model_id=? GROUP BY product_id");
+    $query->execute([$model['id']]);
+    $metadata = $query->fetchAll(PDO::FETCH_ASSOC);   
+    return new JsonResponse(["title"=> $model["title"], "metadata" => $metadata], 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 function searchProducts($search) {
