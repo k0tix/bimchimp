@@ -6,6 +6,7 @@ CREATE TABLE model (
 
 CREATE TABLE metadata (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    element_id INT NOT NULL,
     model_id INT NOT NULL,
     product_id VARCHAR
 );
