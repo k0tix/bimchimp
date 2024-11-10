@@ -2,6 +2,7 @@ import base64
 import multiprocessing as mp
 from pathlib import Path
 import tempfile
+from collections import defaultdict
 
 import ifcopenshell
 import ifcopenshell.util.placement
@@ -16,6 +17,7 @@ from typing import Dict
 
 import ifcopenshell
 import numpy as np
+from scipy.spatial.transform import Rotation
 
 #------------------------------------------------------------------------------
 
@@ -63,6 +65,11 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
     clash_types = {
         "column_to_beam": {"elements": ("IfcColumn", "IfcBeam"), "color": (1.0, 0.0, 0.0)},
         "column_to_foundation": {"elements": ("IfcColumn", "IfcFooting"), "color": (0.0, 0.0, 1.0)},
+        "wall_to_column": {"elements": ("IfcWall", "IfcColumn"), "color": (0.0, 1.0, 0.0)},
+        "column_to_column": {"elements": ("IfcColumn", "IfcColumn"), "color": (1.0, 1.0, 0.0)},
+        "beam_to_beam": {"elements": ("IfcBeam", "IfcBeam"), "color": (0.5, 0.0, 0.5)},
+        "wall_to_foundation": {"elements": ("IfcWall", "IfcFooting"), "color": (0.0, 1.0, 1.0)},
+        "wall_to_wall": {"elements": ("IfcWall", "IfcWall"), "color": (1.0, 0.5, 0.0)}
     }
 
     clash_data = {
@@ -80,14 +87,10 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         parent=model3d
     )
 
-    vertices = [[(0.,0.,.5), (0.,.2,.5), (.2,.2,.5), (.2,0.,.5), (.1,.1,0.)]]
-    faces = [[(0,3,2,1), (0,1,4), (1,2,4), (2,3,4), (3,0,4)]]
-    representation = ifcopenshell.api.geometry.add_mesh_representation(
-        model,
-        context=body,
-        vertices=vertices,
-        faces=faces
+    vertices = defaultdict(
+        lambda: [[(0.,0.,.5), (0.,.2,.5), (.2,.2,.5), (.2,0.,.5), (.1,.1,0.)]]
     )
+    faces = [[(0,3,2,1), (0,1,4), (1,2,4), (2,3,4), (3,0,4)]]
     matrix = np.eye(4)
 
     surface_styles = {}
@@ -112,6 +115,15 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
             allow_touching=True
         )
         clash_data["total_clashes"] += len(clashes)
+        representation = ifcopenshell.api.geometry.add_mesh_representation(
+            model,
+            context=body,
+            vertices=vertices[clash_type],
+            faces=faces
+        )
+        for item in representation.Items:
+            styled_item = model.create_entity("IfcStyledItem", Item=item)
+            styled_item.Styles = [surface_styles[clash_type]]
     
         for i, collision in enumerate(clashes):
             element_a = model.by_id(collision.a.id())
@@ -120,7 +132,7 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
             element = ifcopenshell.api.root.create_entity(model, ifc_class="IfcProxy")
             ifcopenshell.api.geometry.edit_object_placement(
                 model,
-                product=element, 
+                product=element,
                 matrix=matrix
             )
             ifcopenshell.api.geometry.assign_representation(
@@ -128,9 +140,6 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
                 product=element,
                 representation=representation
             )
-
-            styled_item = model.create_entity("IfcStyledItem", Item=representation)
-            styled_item.Styles = [surface_styles[clash_type]]
             clash_info = {
                 "clash_id": f"{clash_type}_clash_{i}",
                 "clash_type": clash_type,
@@ -165,7 +174,7 @@ def just_bim_it(input_file_path: Path) -> Dict:
     tree = ifcopenshell.geom.tree()
     
     settings = ifcopenshell.geom.settings()
-    element_types = ["IfcBeam", "IfcColumn", "IfcFooting"]
+    element_types = ["IfcBeam", "IfcColumn", "IfcFooting", "IfcWall"]
     elements = sum([model.by_type(element_type) for element_type in element_types], [])
     
     it = ifcopenshell.geom.iterator(

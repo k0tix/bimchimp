@@ -3,3 +3,4 @@ flask
 gunicorn
 ifcopenshell==0.8.0
 numpy
+scipy
