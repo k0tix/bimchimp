@@ -48,37 +48,38 @@ $app->post('/files/add', function (Request $request, Response $response, $args) 
 
     $endData = file_get_contents($newFile);
     if(empty($endData)){
-        return new JsonResponse(["error" => "Conversion failed"], 400);
+        return new JsonResponse(["error" => "Conversion failed"], 400, ["Access-Control-Allow-Origin" => "*"]);
     }
     $db->prepare("INSERT INTO model (title, fileData) values (?,?)")->execute([$title, $endData]);
-    return new JsonResponse(["id" => $db->lastInsertId()]);
+    return new JsonResponse(["id" => $db->lastInsertId()],200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 $app->get('/files/list', function (Request $request, Response $response) use($db) {
     $query = $db->prepare("SELECT id, title FROM model");
     $query->execute([]);
     $data = $query->fetchAll(PDO::FETCH_ASSOC);
-    return new JsonResponse($data);
+
+    return new JsonResponse($data, 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 $app->get('/files/{id}', function (Request $request, Response $response, $args) use($db) {
     $query = $db->prepare("SELECT * FROM model WHERE id=?");
     $query->execute([$args['id']]);
     $data = $query->fetch(PDO::FETCH_ASSOC);
-    return new JsonResponse(["id" => $data['id'], "title" => $data['title'], "file" => base64_encode($data['fileData'])]);
+    return new JsonResponse(["id" => $data['id'], "title" => $data['title'], "file" => base64_encode($data['fileData'])], 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 $app->get('/files/{id}/products', function (Request $request, Response $response, $args) use($db) {
     $query = $db->prepare("SELECT id, product_id FROM metadata WHERE id=?");
     $query->execute([$args['id']]);
     $data = $query->fetchAll(PDO::FETCH_ASSOC);
-    return new JsonResponse($data);
+    return new JsonResponse($data, 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 $app->post('/files/{model_id}/products', function (Request $request, Response $response, $args) use($db) {
     $data = json_decode($request->getBody()->getContents(), true);
     $db->prepare("UPDATE metadata SET product_id=? WHERE id=? AND model_id=?")->execute([$data["product_id"], $data['id'], $args['model_id']]);
-    return $response;
+    return new JsonResponse(["id" => $data['id']], 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 $app->get('/products', function (Request $request, Response $response, $args) {
     $search = isset($request->getQueryParams()['search']) ? $request->getQueryParams()['search'] : "";
@@ -91,7 +92,7 @@ $app->get('/products', function (Request $request, Response $response, $args) {
             return strpos($item["product_id"], $search) !== false;
         });
     }
-    return new JsonResponse($parsedData);
+    return new JsonResponse($parsedData, 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 function filterData($data) {
     $parsedData = [];
