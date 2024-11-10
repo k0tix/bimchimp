@@ -53,12 +53,14 @@ const Dashboard: React.FC = () => {
       <div className="relative w-screen h-screen overscroll-none">
         <XbimViewer className="h-screen w-full" />
 
+        {/* <div className="absolute bottom-0 right-0 m-8">
+          <PeikkoProductListView products={products.productData} />
+        </div> */}
+
         <div className="absolute bottom-0 right-0 m-8">
           <PeikkoProductListView products={products.productData} />
-        </div>
 
-        <div className="absolute bottom-0 left-0 m-8">
-          <div className="flex items-center space-x-4 p-4 bg-emerald-600 rounded-lg shadow-lg">
+          <div className="flex items-center space-x-4 p-4 bg-emerald-600 rounded-lg shadow-lg mt-2">
             <Button
               onClick={() => {
                 toggleSidebar();
