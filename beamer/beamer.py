@@ -95,7 +95,11 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         "column_to_column": {"elements": ("IfcColumn", "IfcColumn"), "color": (1.0, 1.0, 0.0)},
         "beam_to_beam": {"elements": ("IfcBeam", "IfcBeam"), "color": (0.5, 0.0, 0.5)},
         "wall_to_foundation": {"elements": ("IfcWall", "IfcFooting"), "color": (0.0, 1.0, 1.0)},
-        "wall_to_wall": {"elements": ("IfcWall", "IfcWall"), "color": (1.0, 0.5, 0.0)}
+        "wall_to_wall": {"elements": ("IfcWall", "IfcWall"), "color": (1.0, 0.5, 0.0)},
+        "plate_to_beam": {"elements": ("IfcPlate", "IfcBeam"), "color": (1.0, 0.5, 0.0)},
+        "plate_to_column": {"elements": ("IfcPlate", "IfcColumn"), "color": (1.0, 0.5, 0.0)}
+
+
     }
 
     clash_data = {
@@ -132,6 +136,8 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         
         surface_styles[clash_type] = surface_style
 
+    columns_in_column_to_plate_clashes = []
+
     # Process each clash type defined in clash_types dictionary
     for clash_type, properties in clash_types.items():
         element_a_type, element_b_type = properties["elements"]
@@ -141,6 +147,12 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
             allow_touching=True
         )
         clashes = filter_clashes(model, clashes, clash_type)
+
+        if clash_type in ("column_to_plate", "beam_to_plate"):
+            for i, collision in enumerate(clashes):
+                columns_in_column_to_plate_clashes.append(collision.b.id())
+            continue
+        
         clash_data["total_clashes"] += len(clashes)
         representation = ifcopenshell.api.geometry.add_mesh_representation(
             model,
@@ -155,6 +167,11 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         for i, collision in enumerate(clashes):
             element_a = model.by_id(collision.a.id())
             element_b = model.by_id(collision.b.id())
+
+            if (element_a.id() in columns_in_column_to_plate_clashes or
+                element_b.id() in columns_in_column_to_plate_clashes):
+                continue
+
             matrix[:,3][0:3] = list(collision.p1)
             element = ifcopenshell.api.root.create_entity(model, ifc_class="IfcProxy")
             ifcopenshell.api.geometry.edit_object_placement(
@@ -201,7 +218,7 @@ def just_bim_it(input_file_path: Path) -> Dict:
     tree = ifcopenshell.geom.tree()
     
     settings = ifcopenshell.geom.settings()
-    element_types = ["IfcBeam", "IfcColumn", "IfcFooting", "IfcWall"]
+    element_types = ["IfcBeam", "IfcColumn", "IfcFooting", "IfcWall", "IfcPlate"]
     elements = sum([model.by_type(element_type) for element_type in element_types], [])
     
     it = ifcopenshell.geom.iterator(
