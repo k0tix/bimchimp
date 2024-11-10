@@ -148,7 +148,7 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         )
         clashes = filter_clashes(model, clashes, clash_type)
 
-        if clash_type in ("column_to_plate", "beam_to_plate"):
+        if clash_type in ("plate_to_column", "plate_to_beam"):
             for i, collision in enumerate(clashes):
                 columns_in_column_to_plate_clashes.append(collision.b.id())
             continue
