@@ -136,7 +136,7 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
         
         surface_styles[clash_type] = surface_style
 
-    columns_in_column_to_plate_clashes = []
+    columns_in_column_to_plate_clashes = set()
 
     # Process each clash type defined in clash_types dictionary
     for clash_type, properties in clash_types.items():
@@ -150,7 +150,10 @@ def analyze_clashes(model: ifcopenshell.file, tree: ifcopenshell.geom.tree) -> D
 
         if clash_type in ("plate_to_column", "plate_to_beam"):
             for i, collision in enumerate(clashes):
-                columns_in_column_to_plate_clashes.append(collision.b.id())
+                element_a = model.by_id(collision.a.id())
+                element_b = model.by_id(collision.b.id())
+                column_id = element_a.id() if (element_a.is_a("IfcColumn") or element_a.is_a("IfcBeam")) else element_b.id()
+                columns_in_column_to_plate_clashes.add(column_id)
             continue
         
         clash_data["total_clashes"] += len(clashes)
