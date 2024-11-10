@@ -52,8 +52,8 @@ $app->post('/files/add', function (Request $request, Response $response, $args) 
     curl_close ($ch); 
     $processedData = json_decode($result, true);
 
-    $b64 = $processedData["file"];
-    $metadata = $processedData["metadata"];
+    $b64 = $processedData["file"] ?? $b64;
+    $metadata = $processedData["metadata"] ?? [];
 
     if(empty($b64)){
         return new JsonResponse(["error" => "Conversion failed (data tiimin vika)"], 400, ["Access-Control-Allow-Origin" => "*"]);
