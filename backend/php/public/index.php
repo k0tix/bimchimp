@@ -37,6 +37,28 @@ $app->post('/files/add', function (Request $request, Response $response, $args) 
     } else {
        //$b64 = ""
     }
+
+    $ch = curl_init();
+    # Setup request to send json via POST.
+    $payload = json_encode( [ "file"=> $b64 ] );
+    curl_setopt($ch, CURLOPT_POST, 1); 
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $payload );
+    curl_setopt( $ch, CURLOPT_HTTPHEADER, ['Content-Type:application/json']);
+    # Return response instead of printing.
+    curl_setopt($ch, CURLOPT_URL,"http://10.0.0.5:5000/beamer" );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+    # Send request.
+    $result = curl_exec($ch);
+    curl_close ($ch); 
+    $processedData = json_decode($result, true);
+
+    $b64 = $processedData["file"];
+    $metadata = $processedData["metadata"];
+
+    if(empty($b64)){
+        return new JsonResponse(["error" => "Conversion failed (data tiimin vika)"], 400, ["Access-Control-Allow-Origin" => "*"]);
+    }
+
     // muunto ifc-> weetabix
     $cacheBim = Cache::getCachedBimConv($b64);
 
@@ -51,7 +73,13 @@ $app->post('/files/add', function (Request $request, Response $response, $args) 
         return new JsonResponse(["error" => "Conversion failed"], 400, ["Access-Control-Allow-Origin" => "*"]);
     }
     $db->prepare("INSERT INTO model (title, fileData) values (?,?)")->execute([$title, $endData]);
-    return new JsonResponse(["id" => $db->lastInsertId()],200, ["Access-Control-Allow-Origin" => "*"]);
+    $modelId = $db->lastInsertId();
+    foreach ($metadata as $key => $value) {
+        $prod = null;
+        if($key%2==0) $prod = "HPM_16L";
+        $db->prepare("INSERT INTO metadata (element_id, product_id, model_id) values (?,?,?)")->execute([$value["marker_id"], $prod, $modelId]);
+    }
+    return new JsonResponse(["id" => $modelId],200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
 $app->get('/files/list', function (Request $request, Response $response) use($db) {
@@ -70,30 +98,46 @@ $app->get('/files/{id}', function (Request $request, Response $response, $args) 
 });
 
 $app->get('/files/{id}/products', function (Request $request, Response $response, $args) use($db) {
-    $query = $db->prepare("SELECT id, product_id FROM metadata WHERE id=?");
+    $query = $db->prepare("SELECT element_id, product_id FROM metadata WHERE model_id=?");
     $query->execute([$args['id']]);
     $data = $query->fetchAll(PDO::FETCH_ASSOC);
     return new JsonResponse($data, 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 
+$app->get('/files/{id}/products/{element_id}', function (Request $request, Response $response, $args) use($db) {
+    $query = $db->prepare("SELECT product_id FROM metadata WHERE model_id=? AND element_id=?");
+    $query->execute([$args['id'], $args['element_id']]);
+    $data = $query->fetch(PDO::FETCH_ASSOC);
+    if(!isset($data["product_id"])) return new JsonResponse(false, 200, ["Access-Control-Allow-Origin" => "*"]);
+    $foundData = searchProducts($data["product_id"]);
+    return new JsonResponse(["product_id"=>$data["product_id"], "img" => isset($foundData[0])? $foundData[0]["img"]:null], 200, ["Access-Control-Allow-Origin" => "*"]);
+});
+
 $app->post('/files/{model_id}/products', function (Request $request, Response $response, $args) use($db) {
     $data = json_decode($request->getBody()->getContents(), true);
-    $db->prepare("UPDATE metadata SET product_id=? WHERE id=? AND model_id=?")->execute([$data["product_id"], $data['id'], $args['model_id']]);
-    return new JsonResponse(["id" => $data['id']], 200, ["Access-Control-Allow-Origin" => "*"]);
+    $db->prepare("UPDATE metadata SET product_id=? WHERE element_id=? AND model_id=?")->execute([$data["product_id"], $data['element_id'], $args['model_id']]);
+    return new JsonResponse(["id" => $data['element_id']], 200, ["Access-Control-Allow-Origin" => "*"]);
 });
 $app->get('/products', function (Request $request, Response $response, $args) {
     $search = isset($request->getQueryParams()['search']) ? $request->getQueryParams()['search'] : "";
+    
+
+    $parsedData = searchProducts($search);
+   
+    return new JsonResponse($parsedData, 200, ["Access-Control-Allow-Origin" => "*"]);
+});
+
+function searchProducts($search) {
     $data = json_decode(file_get_contents(__DIR__ ."/../transformed_peikko_products.json"), true);
-
-
     $parsedData = filterData($data);
     if($search != ""){
         $parsedData = array_filter($parsedData, function($item) use($search){
             return strpos($item["product_id"], $search) !== false;
         });
     }
-    return new JsonResponse($parsedData, 200, ["Access-Control-Allow-Origin" => "*"]);
-});
+    return $parsedData;
+}
+
 function filterData($data) {
     $parsedData = [];
     foreach ($data as $key => $value) {
